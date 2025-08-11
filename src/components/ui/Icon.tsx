@@ -1,11 +1,7 @@
 import React from "react";
 import { type LucideProps } from "lucide-react";
 
-export interface IconProps extends LucideProps {
-  name: string;
-}
-
-const Icon = ({ name, ...props }: IconProps) => {
+const Icon = ({ ...props }: LucideProps) => {
   // This is a placeholder for a dynamic icon component.
   // In a real application, you would use a library like lucide-react
   // to dynamically import and render the icon based on the name prop.

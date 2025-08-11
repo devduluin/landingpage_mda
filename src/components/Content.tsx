@@ -2,18 +2,36 @@
 
 import React, { useRef } from "react";
 import Header from "@/components/layout/Header";
-import HeroSection from "@/components/sections/HeroSection";
-import MDAPartnerSection from "@/components/sections/MDAPartnerSection";
-import ServicesSection from "@/components/sections/ServicesSection";
-import ClientsSection from "@/components/sections/ClientsSection";
-import CoverageAreaSection from "@/components/sections/CoverageAreaSection";
-import CTASection from "@/components/sections/CTASection";
-import {
-  MinimalistFooter,
-  TwoColumnFooter,
-  CardStyleFooter,
-} from "@/components/layout/Footer";
-import FaqSection from "./sections/FaqSection";
+import dynamic from "next/dynamic";
+
+const HeroSection = dynamic(
+  () => import("@/components/sections/HeroSection"),
+  { ssr: false }
+);
+const MDAPartnerSection = dynamic(
+  () => import("@/components/sections/MDAPartnerSection"),
+  { ssr: false }
+);
+const ServicesSection = dynamic(
+  () => import("@/components/sections/ServicesSection"),
+  { ssr: false }
+);
+const ClientsSection = dynamic(
+  () => import("@/components/sections/ClientsSection"),
+  { ssr: false }
+);
+const CoverageAreaSection = dynamic(
+  () => import("@/components/sections/CoverageAreaSection"),
+  { ssr: false }
+);
+const CTASection = dynamic(
+  () => import("@/components/sections/CTASection"),
+  { ssr: false }
+);
+const TwoColumnFooter = dynamic(
+  () => import("@/components/layout/Footer").then((mod) => mod.TwoColumnFooter),
+  { ssr: false }
+);
 
 const MDAPartnerWebsite: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -31,7 +49,6 @@ const MDAPartnerWebsite: React.FC = () => {
           <ServicesSection />
           <ClientsSection />
           <CoverageAreaSection />
-          <FaqSection />
           <CTASection />
         </main>
         <TwoColumnFooter />

@@ -6,8 +6,6 @@ import {
   UserCheck,
   Briefcase,
   BarChart3,
-  ArrowRight,
-  CheckCircle,
 } from "lucide-react";
 import Image from "next/image";
 
@@ -25,125 +23,56 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   description,
   icon: Icon,
   position,
-  delay,
   isVisible,
 }) => {
+  const randomDelay = Math.floor(Math.random() * 500) + 100; // 100–600ms
+
   return (
     <div
       className={`
-      relative transform transition-all duration-1000 ease-out
-      ${
-        isVisible
-          ? "translate-x-0 opacity-100"
-          : position === "left"
-          ? "-translate-x-16 opacity-0"
-          : "translate-x-16 opacity-0"
-      }
-    `}
-      style={{ transitionDelay: `${delay}ms` }}
+        relative transform transition-all duration-1000 ease-out
+        ${
+          isVisible
+            ? "translate-x-0 opacity-100"
+            : position === "left"
+            ? "-translate-x-16 opacity-0"
+            : "translate-x-16 opacity-0"
+        }
+      `}
+      style={{ transitionDelay: `${randomDelay}ms` }}
     >
-      {/* Card Container */}
       <div
         className="
-        group relative bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl
-        transition-all duration-500 hover:-translate-y-2
-        border border-gray-100 hover:border-orange-200
-        overflow-hidden
-      "
+          relative p-8 rounded-[30px] 
+          bg-white
+          [background:linear-gradient(#ffffff,#ffffff)_padding-box,linear-gradient(145deg,transparent_35%,#f97316,#fb923c)_border-box]
+          border-[3px] border-transparent
+          shadow-lg hover:shadow-2xl 
+          transition-all duration-500 hover:-translate-y-2
+        "
       >
-        {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-        {/* Icon */}
         <div className="relative mb-6">
           <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
             <Icon className="w-8 h-8 text-white" />
           </div>
         </div>
 
-        {/* Content */}
-        <div className="relative">
-          <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-orange-600 transition-colors duration-300">
+        <div className="relative flex items-center gap-6">
+          <h3 className="bg-gradient-to-br from-orange-500 to-orange-600 bg-clip-text text-transparent text-xl font-bold mb-4 group-hover:from-orange-600 group-hover:to-orange-700 transition-colors duration-300">
             {title}
           </h3>
           <p className="text-gray-600 leading-relaxed mb-6">{description}</p>
-
-          {/* Learn More Link */}
-          <div className="flex items-center text-orange-500 font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-            <span className="text-sm">Pelajari Lebih Lanjut</span>
-            <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-          </div>
         </div>
 
-        {/* Decorative Elements */}
         <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-full opacity-20 group-hover:scale-150 transition-transform duration-700"></div>
         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-tl from-orange-100 to-transparent rounded-full opacity-30"></div>
       </div>
 
-      {/* Connection Line for Desktop */}
       {position === "left" && (
         <div className="hidden lg:block absolute top-1/2 -right-8 w-16 h-px bg-gradient-to-r from-orange-300 to-transparent"></div>
       )}
-    </div>
-  );
-};
-
-const CenterImage: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
-  return (
-    <div
-      className={`
-      relative transform transition-all duration-1000 ease-out delay-500
-      ${isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"}
-    `}
-    >
-      {/* Main Container */}
-      <div className="relative">
-        {/* Background Gradient Circle */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-
-        {/* Image Container */}
-        <div className="relative bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl overflow-hidden shadow-2xl">
-          {/* Professional Woman Placeholder */}
-          <div className="w-80 h-96 bg-gradient-to-b from-orange-100 to-orange-50 flex items-end justify-center relative">
-            {/* Professional Avatar */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div
-              className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg animate-bounce"
-              style={{ animationDelay: "0s" }}
-            >
-              <CheckCircle className="w-6 h-6 text-green-500" />
-            </div>
-
-            <div
-              className="absolute top-16 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg animate-bounce"
-              style={{ animationDelay: "1s" }}
-            >
-              <BarChart3 className="w-6 h-6 text-blue-500" />
-            </div>
-
-            <div
-              className="absolute bottom-16 left-12 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg animate-bounce"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <Briefcase className="w-6 h-6 text-purple-500" />
-            </div>
-          </div>
-        </div>
-
-        {/* Decorative Ring */}
-        <div
-          className="absolute -inset-4 rounded-full border-2 border-orange-200 animate-spin"
-          style={{ animationDuration: "20s" }}
-        ></div>
-      </div>
     </div>
   );
 };
@@ -176,14 +105,14 @@ const MDAPartnerSection: React.FC = () => {
     {
       title: "Layanan Administrasi Penggajian",
       description:
-        "Kami mengelola penggajian perusahaan secara akurat, mulai dari perhitungan gaji dan pajak, pelaporan, hingga pemenuhan keputusan. Proses ini kami sederhanakan agar perusahaan dapat fokus pada bisnis utamanya.",
+        "Kami mengelola penggajian perusahaan secara akurat, mulai dari perhitungan gaji dan pajak, pelaporan, hingga pemenuhan kepatuhan. Proses ini kami sederhanakan agar perusahaan dapat fokus pada bisnis utamanya.",
       icon: UserCheck,
       position: "right" as const,
     },
     {
       title: "Outsourcing Proses",
       description:
-        "Perusahaan dapat menyerahkan fungsi non-inti kepada tenaga profesional berpengalaman. Kami memberikan solusi proses bisnis seperti menekan biaya operasional, hingga penempatan tenaga kerja.",
+        "Perusahaan dapat menyerahkan fungsi non-inti kepada tenaga profesional berpengalaman. Kami meningkatkan efisiensi proses bisnis seperti menekan biaya operasional, hingga penempatan tenaga kerja.",
       icon: Briefcase,
       position: "left" as const,
     },
@@ -202,7 +131,7 @@ const MDAPartnerSection: React.FC = () => {
         ref={sectionRef}
         className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden mt-[-10rem]"
       >
-        <div className="container mx-auto px-6 relative z-20">
+        <div className="container mx-auto px-4 max-w-7xl relative z-20">
           {/* Background Decorations */}
           <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-orange-100 to-transparent rounded-full blur-3xl opacity-30"></div>
           <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-blue-100 to-transparent rounded-full blur-3xl opacity-20"></div>
@@ -237,7 +166,7 @@ const MDAPartnerSection: React.FC = () => {
                 : "translate-y-8 opacity-0"
             }`}
           >
-            <h2 className="text-4xl text-gray-700 md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl text-gray-700 font-bold mb-6">
               Layanan dari{" "}
               <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                 MDA Partner

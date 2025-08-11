@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
 import {
   FaFacebookF,
@@ -9,7 +10,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { IoLogoGooglePlaystore, IoLogoApple } from "react-icons/io5";
-import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
+// import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
 
 const socialLinks = [
   {
@@ -86,7 +87,7 @@ const Footer = () => {
           {renderColumn(
             0,
             <div className="space-y-4">
-              <LogoDuluinAnimation width={150} height={30} />
+              {/* <LogoDuluinAnimation width={150} height={30} /> */}
               <p className="text-gray-400 text-sm">
                 Jl. Batununggal Mulia X No.9, Mengger, Kec. Bandung Kidul, Kota
                 Bandung, Jawa Barat 40267
@@ -134,10 +135,12 @@ const Footer = () => {
               <div className="mt-8">
                 <h3 className="font-bold mb-4 text-lg">Legalitas</h3>
                 <div className="flex items-center space-x-3">
-                  <img
+                  <Image
                     src="https://pse.kominfo.go.id/static/v2/images/logo-pse-terdaftar.png"
                     alt="PSE Kominfo"
-                    className="w-16 h-16 bg-white p-1 rounded-md"
+                    width={64}
+                    height={64}
+                    className="bg-white p-1 rounded-md"
                   />
                   <div className="text-gray-400 text-xs">
                     <p>

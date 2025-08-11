@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, RefObject } from "react";
 import { Menu, X } from "lucide-react";
-import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
 import { BsWhatsapp } from "react-icons/bs";
 import Image from "next/image";
 
@@ -41,27 +40,32 @@ const NavLink: React.FC<NavLinkProps> = ({
 const WhatsAppButton: React.FC = () => {
   return (
     <button
-      className="group cursor-pointer
-    flex items-center space-x-2
-    px-4 py-2.5 rounded-xl
-    bg-gradient-to-r from-[#158576] to-[#125c52]
-    hover:from-[#158576] hover:to-[#124b44]
-    text-white font-medium text-sm
-    shadow-lg hover:shadow-xl
-    transform transition-all duration-300
-    hover:scale-105 active:scale-95
-    focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
-"
+      onClick={() => window.open("https://wa.me/6281910031000", "_blank")}
+      className="
+        group cursor-pointer relative overflow-hidden
+        flex items-center space-x-2
+        px-4 py-2.5 rounded-xl
+        bg-gradient-to-r from-[#158576] to-[#125c52]
+        text-white font-medium text-sm
+        shadow-lg 
+        transform transition-all duration-300
+        hover:scale-105 active:scale-95 outline-none
+        focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2
+
+        active:outline-none active:ring-0 active:focus:outline-none active:focus:ring-0
+        focus-visible:outline-none focus-visible:ring-0
+
+        after:content-[''] after:absolute after:-z-10 after:h-1 after:w-1
+        after:bg-green-900 after:left-1/2 after:top-1/2 after:-translate-x-1/2 after:-translate-y-1/2
+        after:rounded-full after:transition-all after:duration-[1500ms]
+        hover:after:scale-[300]
+      "
     >
       <BsWhatsapp
         size={18}
-        className="hover:animate-[wiggle_1s_ease-in-out_infinite] group-hover:scale-105 transition-transform duration-300"
+        className="group-hover:scale-105 transition-transform duration-300"
       />
-      <span className="relative inline-block">
-        <span className="block transition-transform duration-300">
-          WhatsApp
-        </span>
-      </span>
+      <span>WhatsApp</span>
     </button>
   );
 };
@@ -73,7 +77,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection] = useState("");
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;
@@ -110,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
           }
         `}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-4 max-w-7xl py-4">
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.location.reload()}
@@ -169,7 +173,7 @@ const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
           `}
       >
         <div className="bg-white/95 backdrop-blur-md border-t border-gray-100">
-          <nav className="container mx-auto px-6 py-4">
+          <nav className="container mx-auto px-4 max-w-7xl py-4">
             <div className="space-y-2">
               {navItems.map((item, index) => (
                 <a

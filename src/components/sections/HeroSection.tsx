@@ -1,76 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { HardHat, Users, Award, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
-
-interface FloatingCardProps {
-  icon: React.ElementType;
-  title: string;
-  description: string;
-  delay: number;
-  position: string;
-}
-
-const FloatingCard: React.FC<FloatingCardProps> = ({
-  icon: Icon,
-  title,
-  description,
-  delay,
-  position,
-}) => {
-  return (
-    <div
-      className={`
-        absolute ${position} 
-        bg-white/15 backdrop-blur-md rounded-2xl p-4 border border-white/20
-        hover:bg-white/20 hover:scale-105 
-        transition-all duration-500 ease-out
-        animate-float
-      `}
-      style={{
-        animationDelay: `${delay}ms`,
-        animation: "float 6s ease-in-out infinite",
-      }}
-    >
-      <div className="flex items-center space-x-3">
-        <div className="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-lg flex items-center justify-center">
-          <Icon className="w-5 h-5 text-white" />
-        </div>
-        <div>
-          <h4 className="text-white text-sm font-semibold">{title}</h4>
-          <p className="text-gray-300 text-xs">{description}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const TypewriterText: React.FC<{ text: string; speed?: number }> = ({
-  text,
-  speed = 100,
-}) => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      }, speed);
-      return () => clearTimeout(timer);
-    }
-  }, [currentIndex, text, speed]);
-
-  return (
-    <span>
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
-  );
-};
 
 const HeroSection: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -96,17 +28,17 @@ const HeroSection: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  const stats = [
-    { number: "500+", label: "Klien Puas", icon: Users },
-    { number: "10K+", label: "Tenaga Kerja", icon: HardHat },
-    { number: "99%", label: "Success Rate", icon: TrendingUp },
-  ];
+  // const stats = [
+  //   { number: "500+", label: "Klien Puas", icon: Users },
+  //   { number: "10K+", label: "Tenaga Kerja", icon: HardHat },
+  //   { number: "99%", label: "Success Rate", icon: TrendingUp },
+  // ];
 
   return (
     <>
       <section
         ref={heroRef}
-        className="relative pt-16 pb-48 flex items-center justify-center "
+        className="relative pt-16 pb-48 container mx-auto px-4 max-w-7xl"
       >
         <div className="rounded-[100px] bg-gradient-to-br from-gray-900 via-gray-800 to-orange-900 relative">
           {/* Animated Background Elements */}
@@ -130,11 +62,11 @@ const HeroSection: React.FC = () => {
             style={{ animationDelay: "2s" }}
           ></div>
 
-          <div className="max-h-[400px] flex items-center container mx-auto px-16 py-10 relative z-10 rounded-[90px]">
+          <div className="max-h-[400px] flex items-center px-6 md:px-12 py-10 relative z-10 rounded-[90px]">
             <div className="grid lg:grid-cols-2 gap-6 items-center">
               {/* Left Content */}
               <div
-                className={`text-white p-1 space-y-8 overflow-y-hidden transform transition-all duration-1000 ${
+                className={`text-white p-1 space-y-8 transform transition-all duration-1000 ${
                   isVisible
                     ? "translate-x-0 opacity-100"
                     : "-translate-x-12 opacity-0"
@@ -170,7 +102,7 @@ const HeroSection: React.FC = () => {
                 </p>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-6 p-0 mb-2">
+                {/* <div className="grid grid-cols-3 gap-6 p-0 mb-2">
                   {stats.map((stat, index) => (
                     <div
                       key={index}
@@ -188,18 +120,25 @@ const HeroSection: React.FC = () => {
                       <div className="text-sm text-gray-400">{stat.label}</div>
                     </div>
                   ))}
-                </div>
+                </div> */}
 
                 {/* CTA Buttons */}
                 <Button
                   size="lg"
-                  className="cursor-pointer inset-shadow-orange-400 inset-shadow-sm
-    bg-gradient-to-r from-orange-500 to-orange-600 
-    hover:from-orange-600 hover:to-orange-700 hover:inset-shadow-sm hover:inset-shadow--orange-600
+                  onClick={() =>
+                    window.open("https://wa.me/6281910031000", "_blank")
+                  }
+                  className="
+    relative cursor-pointer overflow-hidden
+    bg-gradient-to-r from-orange-500 to-orange-600
+    hover:from-orange-600 hover:to-orange-700
     text-white font-semibold px-8 py-4 !rounded-full
-    shadow-lg hover:shadow-xl
-    transform transition-all duration-500 ease-in-out
-    hover:scale-[101%] active:inset-shadow-orange-900 active:inset-shadow-xs active:scale-none
+    transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
+    hover:scale-105 active:scale-97
+    before:content-[''] before:absolute before:inset-0 before:rounded-full
+    before:shadow-[inset_0_0_8px_theme(colors.orange.400)]
+    before:transition-all before:duration-500
+    hover:before:shadow-[inset_0_0_20px_theme(colors.orange.400)]
   "
                 >
                   Bergabung Bersama Kami!

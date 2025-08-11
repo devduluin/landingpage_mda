@@ -270,3 +270,31 @@ html {
 .animate-pop-in {
   animation: pop-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
+
+/* ClientSection */
+@keyframes waveMove {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+/* ClientSection */
+
+/* CTASection */
+@keyframes floatCTA {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: floatCTA 3s ease-in-out infinite;
+}
+/* CTASection */
