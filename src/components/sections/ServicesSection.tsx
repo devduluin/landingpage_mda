@@ -154,7 +154,7 @@ export default function ServicesSection() {
   const [animatedCards, setAnimatedCards] = useState(new Set());
   const sectionRef = useRef(null);
 
-  const toggleCard = (index: any) => {
+  const toggleCard = (index: number) => {
     const newExpandedCards = new Set(expandedCards);
     if (newExpandedCards.has(index)) {
       newExpandedCards.delete(index);
@@ -195,8 +195,9 @@ export default function ServicesSection() {
     }
 
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      const currentRef = sectionRef.current;
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);

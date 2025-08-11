@@ -8,7 +8,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
 import Image from "next/image";
 
 // Option 1: Minimalist Single Column

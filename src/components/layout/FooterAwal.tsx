@@ -8,6 +8,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
+import Image from "next/image";
 import { IoLogoGooglePlaystore, IoLogoApple } from "react-icons/io5";
 import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
 
@@ -134,9 +135,11 @@ const Footer = () => {
               <div className="mt-8">
                 <h3 className="font-bold mb-4 text-lg">Legalitas</h3>
                 <div className="flex items-center space-x-3">
-                  <img
+                  <Image
                     src="https://pse.kominfo.go.id/static/v2/images/logo-pse-terdaftar.png"
                     alt="PSE Kominfo"
+                    width={64}
+                    height={64}
                     className="w-16 h-16 bg-white p-1 rounded-md"
                   />
                   <div className="text-gray-400 text-xs">

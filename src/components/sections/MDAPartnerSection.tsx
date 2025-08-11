@@ -88,65 +88,19 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   );
 };
 
-const CenterImage: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
-  return (
-    <div
-      className={`
-      relative transform transition-all duration-1000 ease-out delay-500
-      ${isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"}
-    `}
-    >
-      {/* Main Container */}
-      <div className="relative">
-        {/* Background Gradient Circle */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 rounded-full blur-2xl opacity-20 animate-pulse"></div>
-
-        {/* Image Container */}
-        <div className="relative bg-gradient-to-br from-orange-400 to-orange-600 rounded-3xl overflow-hidden shadow-2xl">
-          {/* Professional Woman Placeholder */}
-          <div className="w-80 h-96 bg-gradient-to-b from-orange-100 to-orange-50 flex items-end justify-center relative">
-            {/* Professional Avatar */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-32 h-32 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center">
-                  <Users className="w-10 h-10 text-white" />
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div
-              className="absolute top-8 left-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg animate-bounce"
-              style={{ animationDelay: "0s" }}
-            >
-              <CheckCircle className="w-6 h-6 text-green-500" />
-            </div>
-
-            <div
-              className="absolute top-16 right-8 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg animate-bounce"
-              style={{ animationDelay: "1s" }}
-            >
-              <BarChart3 className="w-6 h-6 text-blue-500" />
-            </div>
-
-            <div
-              className="absolute bottom-16 left-12 bg-white/90 backdrop-blur-sm rounded-xl p-3 shadow-lg animate-bounce"
-              style={{ animationDelay: "0.5s" }}
-            >
-              <Briefcase className="w-6 h-6 text-purple-500" />
-            </div>
-          </div>
-        </div>
-
-        {/* Decorative Ring */}
-        <div
-          className="absolute -inset-4 rounded-full border-2 border-orange-200 animate-spin"
-          style={{ animationDuration: "20s" }}
-        ></div>
-      </div>
-    </div>
-  );
-};
+// Unused component kept for potential future use
+// const CenterImage: React.FC<{ isVisible: boolean }> = ({ isVisible }) => {
+//   return (
+//     <div
+//       className={`
+//       relative transform transition-all duration-1000 ease-out delay-500
+//       ${isVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"}
+//     `}
+//     >
+//       {/* Original implementation removed to avoid lint warning */}
+//     </div>
+//   );
+// };
 
 const MDAPartnerSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

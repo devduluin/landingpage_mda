@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, RefObject } from "react";
 import { Menu, X } from "lucide-react";
-import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
 import { BsWhatsapp } from "react-icons/bs";
 import Image from "next/image";
 
@@ -73,7 +72,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection] = useState("");
 
   useEffect(() => {
     const scrollContainer = scrollContainerRef.current;

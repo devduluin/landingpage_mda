@@ -49,28 +49,28 @@ const LogoDuluinAnimation: React.FC<LogoDuluinProps> = ({
     // Reset logo
     if (logoSvg) {
       logoSvg.style.animation = "none";
-      logoSvg.offsetHeight; // Trigger reflow
+      void logoSvg.offsetHeight; // Trigger reflow
       logoSvg.style.animation = "";
     }
 
     // Reset shapes
     shapes.forEach((shape) => {
       shape.style.animation = "none";
-      shape.offsetHeight;
+      void shape.offsetHeight;
       shape.style.animation = "";
     });
 
     // Reset letters
     letters.forEach((letter) => {
       letter.style.animation = "none";
-      letter.offsetHeight;
+      void letter.offsetHeight;
       letter.style.animation = "";
     });
 
     // Reset dot
     if (dot) {
       dot.style.animation = "none";
-      dot.offsetHeight;
+      void dot.offsetHeight;
       dot.style.animation = "";
     }
   };

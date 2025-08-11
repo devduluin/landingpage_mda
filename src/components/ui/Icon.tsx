@@ -5,7 +5,7 @@ export interface IconProps extends LucideProps {
   name: string;
 }
 
-const Icon = ({ name, ...props }: IconProps) => {
+const Icon = ({ name: _name, ...props }: IconProps) => {
   // This is a placeholder for a dynamic icon component.
   // In a real application, you would use a library like lucide-react
   // to dynamically import and render the icon based on the name prop.

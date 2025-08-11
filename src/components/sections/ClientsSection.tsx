@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { CheckCircle } from "lucide-react";
 
 const clients = [
   { name: "goto", style: "font-black text-2xl text-blue-400" },

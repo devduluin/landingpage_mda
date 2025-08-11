@@ -47,31 +47,6 @@ const FloatingCard: React.FC<FloatingCardProps> = ({
   );
 };
 
-const TypewriterText: React.FC<{ text: string; speed?: number }> = ({
-  text,
-  speed = 100,
-}) => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      }, speed);
-      return () => clearTimeout(timer);
-    }
-  }, [currentIndex, text, speed]);
-
-  return (
-    <span>
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
-  );
-};
-
 const HeroSection: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
