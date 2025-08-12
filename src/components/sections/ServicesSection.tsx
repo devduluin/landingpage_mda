@@ -12,7 +12,6 @@ import {
   UserCheck,
   Headphones,
   ChevronDown,
-  ChevronUp,
   Check,
 } from "lucide-react";
 
@@ -22,23 +21,21 @@ const services = [
     title: "Ride-Hailing Driver",
     description: "Driver profesional untuk layanan ride-hailing",
     details: [
-      "Ahli dalam penggunaan navigasi",
-      "Menguasai rute-rute alternatif",
-      "Berpengalaman mengendarai mobil",
-      "Memiliki ketrampilan apps ridehailing",
-      "Sopan dan ramah kepada penumpang",
-      "Menguasai aplikasi yang ada",
+      "Antar jemput penumpang tepat waktu",
+      "Menjaga kenyamanan dan keselamatan perjalanan",
+      "Merawat kendaraan agar tetap layak jalan",
+      "Mengikuti standar pelayanan pelanggan yang baik",
     ],
   },
   {
     icon: HardHat,
-    title: "Manufacture (Fabrikasi/Garment)",
+    title: "Manufacture (Pabrikasi/Garmen)",
     description: "Tenaga kerja manufaktur berpengalaman",
     details: [
-      "Management mesin produksi",
-      "Menguasai prosedural kualitas",
-      "Memiliki proses pengendalian dari SIN PM",
-      "Mengerti prosedur keselamatan kerja",
+      "Mengoperasikan mesin produksi",
+      "Melakukan pengecekan kualitas produk",
+      "Membantu proses pengemasan dan distribusi",
+      "Menjaga kebersihan dan keselamatan kerja",
     ],
   },
   {
@@ -46,10 +43,10 @@ const services = [
     title: "Security & Building Management",
     description: "Keamanan dan pengelolaan gedung",
     details: [
-      "Menguasai keamanan area gedung",
-      "Memiliki perilaku responsif terhadap situasi darurat",
-      "Memahami teknis dan prosedur keamanan",
-      "Menguasai dalam hal laporan harian",
+      "Menjaga keamanan area gedung",
+      "Melakukan patroli dan pencatatan aktivitas",
+      "Membantu tamu dan penghuni gedung",
+      "Memastikan fasilitas berfungsi optimal",
     ],
   },
   {
@@ -57,10 +54,10 @@ const services = [
     title: "Courier",
     description: "Layanan kurir terpercaya",
     details: [
-      "Menguassi dan menggunakan sistem rute terbaik",
-      "Menguasai navigasi terpadu dengan sistem",
-      "Memiliki ketrampilan survey alam",
-      "Sopan dan bersiskap kepada customer",
+      "Mengambil dan mengirimkan paket tepat waktu",
+      "Menjaga kondisi barang selama pengiriman",
+      "Melakukan pencatatan pengiriman",
+      "Berkoordinasi dengan pelanggan",
     ],
   },
   {
@@ -68,9 +65,10 @@ const services = [
     title: "Trucking Driver",
     description: "Driver truk profesional",
     details: [
-      "Menguasai kemitraan travel birasal distribusi",
-      "Berpengalaman dengan truck",
-      "Memiliki ahli menguasai ketrampilan SIM A/B terhadap kendaraan",
+      "Mengangkut barang sesuai jadwal dan rute",
+      "Memastikan barang aman selama perjalanan",
+      "Melakukan pengecekan kendaraan sebelum berangkat",
+      "Melaporkan kondisi rute dan kendaraan",
     ],
   },
   {
@@ -78,10 +76,10 @@ const services = [
     title: "Technician",
     description: "Teknisi ahli berbagai bidang",
     details: [
-      "Menguasai teknis perbaikan elektronik",
-      "Bisa alat peralatan penunjang",
-      "Menguasai dalam service manual",
-      "Memiliki ketrampilan teori dan keahlian tahap lain",
+      "Pemeriksaan dan perbaikan sistem teknis",
+      "Membersihkan dan merawat komponen alat",
+      "Memastikan sistem berjalan dengan baik",
+      "Melaporkan hasil perawatan secara rutin",
     ],
   },
   {
@@ -89,9 +87,10 @@ const services = [
     title: "Gardener (Layanan Pertamanan)",
     description: "Layanan taman profesional",
     details: [
-      "Pengendalian rumput tanaman dan pembasuhan",
-      "Pemangkasan pohon tanaman dan housework",
-      "Pengetahuan keahlian tanaman",
+      "Perawatan rutin taman dan tanaman hias",
+      "Pemangkasan, penyiraman, dan pemupukan",
+      "Penanggulangan hama tanaman",
+      "Perancangan dan pemeliharaan lanskap",
     ],
   },
   {
@@ -99,9 +98,10 @@ const services = [
     title: "Pest Control",
     description: "Pengendalian hama terpadu",
     details: [
-      "Pengendalian terhadap pest control",
-      "Penggunaan dan hama expert untuk menguasai step-by-step",
-      "Pemahaman terhadap survey dan mengatasi",
+      "Penyediaan tenaga pest control bersertifikasi",
+      "Penanganan hama seperti tikus, serangga, rayap, dll",
+      "Metode fogging, spraying, dan fumigasi",
+      "Pemantauan dan inspeksi berkala",
     ],
   },
   {
@@ -109,9 +109,10 @@ const services = [
     title: "Gondola",
     description: "Operator gondola berpengalaman",
     details: [
-      "Menguasai operasi gondola",
-      "Pembersihan kerja ahli dinamis dengan optimal",
-      "Menguasai operasi menggalur sisi rutin gondola",
+      "Penyediaan operator gondola bersertifikasi K3",
+      "Pembersihan kaca dan eksterior gedung bertingkat",
+      "Inspeksi dan pemeliharaan unit gondola",
+      "Pelaksanaan prosedur keselamatan kerja yang ketat",
     ],
   },
   {
@@ -119,10 +120,10 @@ const services = [
     title: "Cleaning Service",
     description: "Layanan kebersihan menyeluruh",
     details: [
-      "Pembersihan kantor toilet, mess, toilet karyawan aula",
-      "Deep cleaning gedung",
-      "Pengelolaan sampah dan limbah",
-      "Pembersihan dan pengoperasian area inventaris",
+      "Pembersihan harian (lantai, meja, toilet, kaca, area umum)",
+      "Deep cleaning berkala",
+      "Pengelolaan sampah dan sanitasi",
+      "Penyediaan dan pengelolaan alat kebersihan serta chemical",
     ],
   },
   {
@@ -141,9 +142,10 @@ const services = [
     title: "Front Office",
     description: "Resepsionis dan customer service",
     details: [
-      "Resepsionis dan administrasi kantor",
-      "Pengelolaan tamu dari operasi tamu bangunan",
-      "Komunikasi dan koperasi administrasi dan pelayanan",
+      "Resepsionis dan petugas penerima tamu",
+      "Pengelolaan buku tamu dan sistem kunjungan",
+      "Penanganan telepon dan korespondensi",
+      "Pengelolaan dokumen dan informasi umum",
     ],
   },
 ];
@@ -190,12 +192,12 @@ export default function ServicesSection() {
       }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const currentRef = sectionRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      const currentRef = sectionRef.current;
       if (currentRef) {
         observer.unobserve(currentRef);
       }
@@ -221,7 +223,7 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {services.map((service, index) => {
             const isExpanded = expandedCards.has(index);
             const isAnimated = animatedCards.has(index);
@@ -230,7 +232,7 @@ export default function ServicesSection() {
             return (
               <div
                 key={index}
-                className={`bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-500 overflow-hidden border border-gray-100 ${
+                className={`bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-500 border border-gray-100 flex flex-col ${
                   isAnimated
                     ? "opacity-100 translate-y-0 scale-100"
                     : "opacity-0 translate-y-8 scale-95"
@@ -239,82 +241,68 @@ export default function ServicesSection() {
                   transitionDelay: isAnimated ? `${index * 50}ms` : "0ms",
                 }}
               >
-                {/* Default Collapsed Card */}
-                {!isExpanded && (
-                  <>
-                    {/* Icon and Title - Single Row */}
-                    <div className="flex items-center space-x-4 p-6">
-                      <div
-                        className={`w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                          isAnimated ? "rotate-0" : "rotate-12"
-                        }`}
-                      >
-                        <Icon className="w-6 h-6 text-gray-800" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg text-orange-500">
-                          {service.title}
-                        </h3>
-                      </div>
-                    </div>
+                {/* Header */}
+                <div className="flex items-center space-x-4 p-6">
+                  <div
+                    className={`w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      isAnimated ? "rotate-0" : "rotate-12"
+                    }`}
+                  >
+                    <Icon className="w-6 h-6 text-gray-800" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-lg text-orange-500">
+                      {service.title}
+                    </h3>
+                  </div>
+                </div>
 
-                    {/* Action Button */}
-                    <div className="bg-orange-500 hover:bg-orange-600 transition-colors duration-200">
-                      <button
-                        onClick={() => toggleCard(index)}
-                        className="w-full text-white py-3 px-6 font-medium flex items-center justify-center space-x-2"
-                      >
-                        <span>Lihat Layanan</span>
-                        <ChevronDown className="w-4 h-4" />
-                      </button>
+                {/* Expandable Content */}
+                <div
+                  className={`grid transition-[grid-template-rows] duration-500 ease-in-out ${
+                    isExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-6 pb-4 pt-0 space-y-2">
+                      {service.details.map((detail, detailIndex) => (
+                        <div
+                          key={detailIndex}
+                          className={`flex items-start space-x-2 transition-all duration-500 ${
+                            isExpanded
+                              ? "opacity-100 translate-x-0"
+                              : "opacity-0 -translate-x-4"
+                          }`}
+                          style={{
+                            transitionDelay: isExpanded
+                              ? `${100 + detailIndex * 50}ms`
+                              : "0ms",
+                          }}
+                        >
+                          <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-1" />
+                          <p className="text-sm text-gray-700 leading-relaxed">
+                            {detail}
+                          </p>
+                        </div>
+                      ))}
                     </div>
-                  </>
-                )}
+                  </div>
+                </div>
 
-                {/* Expanded Content */}
-                {isExpanded && (
-                  <>
-                    {/* Header with Icon and Title */}
-                    <div className="flex items-center space-x-4 p-6 pb-4">
-                      <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-gray-800" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-lg text-orange-500">
-                          {service.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    {/* Details List */}
-                    <div className="px-6 pb-4">
-                      <div className="space-y-2">
-                        {service.details.map((detail, detailIndex) => (
-                          <div
-                            key={detailIndex}
-                            className="flex items-start space-x-2"
-                          >
-                            <Check className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                              {detail}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Close Button */}
-                    <div className="bg-orange-500 hover:bg-orange-600 transition-colors duration-200">
-                      <button
-                        onClick={() => toggleCard(index)}
-                        className="w-full text-white py-3 px-6 font-medium flex items-center justify-center space-x-2"
-                      >
-                        <span>Tutup</span>
-                        <ChevronUp className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </>
-                )}
+                {/* Footer Button */}
+                <div className="mt-auto rounded-b-2xl bg-orange-500 hover:bg-orange-600 transition-colors duration-200">
+                  <button
+                    onClick={() => toggleCard(index)}
+                    className="w-full text-white py-3 px-6 font-medium flex items-center justify-center space-x-2"
+                  >
+                    <span>{isExpanded ? "Tutup" : "Lihat Layanan"}</span>
+                    <ChevronDown
+                      className={`w-4 h-4 transition-transform duration-300 ${
+                        isExpanded ? "rotate-180" : "rotate-0"
+                      }`}
+                    />
+                  </button>
+                </div>
               </div>
             );
           })}

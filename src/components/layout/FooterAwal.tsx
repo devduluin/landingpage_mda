@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
 import {
   FaFacebookF,
@@ -8,9 +9,7 @@ import {
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import Image from "next/image";
 import { IoLogoGooglePlaystore, IoLogoApple } from "react-icons/io5";
-import LogoDuluinAnimation from "../animations/LogoDuluinAnimation";
 
 const socialLinks = [
   {
@@ -87,7 +86,7 @@ const Footer = () => {
           {renderColumn(
             0,
             <div className="space-y-4">
-              <LogoDuluinAnimation width={150} height={30} />
+              {/* <LogoDuluinAnimation width={150} height={30} /> */}
               <p className="text-gray-400 text-sm">
                 Jl. Batununggal Mulia X No.9, Mengger, Kec. Bandung Kidul, Kota
                 Bandung, Jawa Barat 40267
@@ -140,7 +139,7 @@ const Footer = () => {
                     alt="PSE Kominfo"
                     width={64}
                     height={64}
-                    className="w-16 h-16 bg-white p-1 rounded-md"
+                    className="bg-white p-1 rounded-md"
                   />
                   <div className="text-gray-400 text-xs">
                     <p>
@@ -231,7 +230,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-16 pt-8 text-center text-gray-500">
           <p className="text-sm">
-            Copyright © {new Date().getFullYear()} PT. Rosa Aksata Nusantara.
+            Copyright © {new Date().getFullYear()} PT. Rasa Aksata Nusantara.
             All Rights Reserved.
           </p>
         </div>
