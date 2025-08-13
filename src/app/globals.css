@@ -130,6 +130,80 @@ html {
   }
 }
 
+/* Header */
+.hamburger-checkbox {
+  display: none;
+}
+
+.hamburger-toggle {
+  position: relative;
+  width: 40px;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  height: calc(4px * 3 + 11px * 2);
+}
+
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: calc(4px / 2);
+  background: #f97316;
+  color: inherit;
+  opacity: 1;
+  transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
+}
+
+.hamburger-bar--top {
+  bottom: calc(50% + 11px + 4px / 2);
+  transition-property: bottom, transform;
+  transition-delay: calc(0s + 0.35s * 0.6);
+}
+
+.hamburger-bar--middle {
+  top: calc(50% - 4px / 2);
+  transition-property: opacity, transform;
+  transition-delay: calc(0s + 0.35s * 0.3);
+}
+
+.hamburger-bar--bottom {
+  top: calc(50% + 11px + 4px / 2);
+  transition-property: top, transform;
+  transition-delay: 0s;
+}
+
+.hamburger-checkbox:checked + .hamburger-toggle .hamburger-bar--top {
+  transform: rotate(-135deg);
+  transition-delay: 0s;
+  bottom: calc(50% - 4px / 2);
+}
+
+.hamburger-checkbox:checked + .hamburger-toggle .hamburger-bar--middle {
+  opacity: 0;
+  transform: rotate(-135deg);
+  transition-delay: calc(0s + 0.35s * 0.3);
+}
+
+.hamburger-checkbox:checked + .hamburger-toggle .hamburger-bar--bottom {
+  top: calc(50% - 4px / 2);
+  transform: rotate(-225deg);
+  transition-delay: calc(0s + 0.35s * 0.6);
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Header */
+
 /* HeroSection */
 @keyframes float {
   0%,
@@ -163,6 +237,85 @@ html {
 }
 
 /* MDAPartnerSection */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes border-move {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-border-move {
+  animation: border-move 2s ease-in-out infinite;
+}
+
+.bg-yellow-25 {
+  background-color: rgba(254, 240, 138, 0.1);
+}
+
+.from-yellow-25 {
+  --tw-gradient-from: rgba(254, 240, 138, 0.1);
+  --tw-gradient-to: rgba(254, 240, 138, 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-orange-25 {
+  --tw-gradient-to: rgba(249, 115, 22, 0.1);
+}
+
+@keyframes blob-bounce {
+  0% {
+    top: 10px;
+    left: 10px;
+  }
+  25% {
+    top: 10px;
+    right: 10px;
+    left: auto;
+  }
+  50% {
+    bottom: 10px;
+    right: 10px;
+    top: auto;
+    left: auto;
+  }
+  75% {
+    bottom: 10px;
+    left: 10px;
+    right: auto;
+    top: auto;
+  }
+  100% {
+    top: 10px;
+    left: 10px;
+    bottom: auto;
+    right: auto;
+  }
+}
+
+@keyframes border-rotate-fast {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -194,6 +347,18 @@ html {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.8s ease-out;
 }
 
 /* ServicesSection */

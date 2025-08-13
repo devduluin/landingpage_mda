@@ -4,6 +4,8 @@ import React, { useRef } from "react";
 import Header from "@/components/layout/Header";
 import dynamic from "next/dynamic";
 
+import { TwoColumnFooterProps } from "@/components/layout/Footer";
+
 const HeroSection = dynamic(() => import("@/components/sections/HeroSection"), {
   ssr: false,
 });
@@ -26,8 +28,8 @@ const CoverageAreaSection = dynamic(
 const CTASection = dynamic(() => import("@/components/sections/CTASection"), {
   ssr: false,
 });
-const TwoColumnFooter = dynamic(
-  () => import("@/components/layout/Footer").then((mod) => mod.TwoColumnFooter),
+const TwoColumnFooter = dynamic<TwoColumnFooterProps>(
+  () => import("@/components/layout/Footer"),
   { ssr: false }
 );
 
@@ -49,7 +51,7 @@ const MDAPartnerWebsite: React.FC = () => {
           <CoverageAreaSection />
           <CTASection />
         </main>
-        <TwoColumnFooter />
+        <TwoColumnFooter scrollContainerRef={scrollContainerRef} />
       </div>
     </div>
   );

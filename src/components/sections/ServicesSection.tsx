@@ -14,10 +14,11 @@ import {
   ChevronDown,
   Check,
 } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
-    icon: Car,
+    icon: "/cardLists/image 1.svg",
     title: "Ride-Hailing Driver",
     description: "Driver profesional untuk layanan ride-hailing",
     details: [
@@ -28,7 +29,7 @@ const services = [
     ],
   },
   {
-    icon: HardHat,
+    icon: "/cardLists/image 8.svg",
     title: "Manufacture (Pabrikasi/Garmen)",
     description: "Tenaga kerja manufaktur berpengalaman",
     details: [
@@ -39,7 +40,7 @@ const services = [
     ],
   },
   {
-    icon: Shield,
+    icon: "/cardLists/image 3.svg",
     title: "Security & Building Management",
     description: "Keamanan dan pengelolaan gedung",
     details: [
@@ -50,7 +51,7 @@ const services = [
     ],
   },
   {
-    icon: User,
+    icon: "/cardLists/image 9.svg",
     title: "Courier",
     description: "Layanan kurir terpercaya",
     details: [
@@ -61,7 +62,7 @@ const services = [
     ],
   },
   {
-    icon: Truck,
+    icon: "/cardLists/image 5.svg",
     title: "Trucking Driver",
     description: "Driver truk profesional",
     details: [
@@ -72,7 +73,7 @@ const services = [
     ],
   },
   {
-    icon: Wrench,
+    icon: "/cardLists/image 6.svg",
     title: "Technician",
     description: "Teknisi ahli berbagai bidang",
     details: [
@@ -83,7 +84,7 @@ const services = [
     ],
   },
   {
-    icon: Users,
+    icon: "/cardLists/image 7.svg",
     title: "Gardener (Layanan Pertamanan)",
     description: "Layanan taman profesional",
     details: [
@@ -94,7 +95,7 @@ const services = [
     ],
   },
   {
-    icon: Eye,
+    icon: "/cardLists/image 8.svg",
     title: "Pest Control",
     description: "Pengendalian hama terpadu",
     details: [
@@ -105,7 +106,7 @@ const services = [
     ],
   },
   {
-    icon: Building,
+    icon: "/cardLists/image 3.svg",
     title: "Gondola",
     description: "Operator gondola berpengalaman",
     details: [
@@ -116,7 +117,7 @@ const services = [
     ],
   },
   {
-    icon: UserCheck,
+    icon: "/cardLists/image 2.svg",
     title: "Cleaning Service",
     description: "Layanan kebersihan menyeluruh",
     details: [
@@ -127,7 +128,7 @@ const services = [
     ],
   },
   {
-    icon: Car,
+    icon: "/cardLists/image 12.svg",
     title: "Driver Kantoran",
     description: "Driver untuk kebutuhan kantor",
     details: [
@@ -138,7 +139,7 @@ const services = [
     ],
   },
   {
-    icon: Headphones,
+    icon: "/cardLists/image 11.svg",
     title: "Front Office",
     description: "Resepsionis dan customer service",
     details: [
@@ -205,25 +206,25 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 bg-gray-50">
+    <section ref={sectionRef} className="py-12 md:py-16 bg-gray-50">
       <div className="container mx-auto px-4 max-w-7xl">
         <div
-          className={`text-center mb-16 transition-all duration-800 ${
+          className={`text-center mb-12 md:mb-16 transition-all duration-800 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl font-bold text-gray-700 mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-4">
             <span className="text-orange-500">MDA Partner</span> Menyediakan
             Aneka Jasa
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
             Kami menawarkan berbagai jasa untuk memenuhi kebutuhan SDM Anda.
             Tentukan solusi yang Anda butuhkan dan maksimalkan potensi
             perusahaan Anda!
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
           {services.map((service, index) => {
             const isExpanded = expandedCards.has(index);
             const isAnimated = animatedCards.has(index);
@@ -242,16 +243,22 @@ export default function ServicesSection() {
                 }}
               >
                 {/* Header */}
-                <div className="flex items-center space-x-4 p-6">
+                <div className="flex items-center space-x-4 p-5 md:p-6">
                   <div
                     className={`w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                       isAnimated ? "rotate-0" : "rotate-12"
                     }`}
                   >
-                    <Icon className="w-6 h-6 text-gray-800" />
+                    <Image
+                      src={service.icon}
+                      alt={service.title}
+                      width={24}
+                      height={24}
+                      className="w-6 h-6 object-contain"
+                    />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-semibold text-lg text-orange-500">
+                    <h3 className="font-semibold text-base md:text-lg text-orange-500">
                       {service.title}
                     </h3>
                   </div>
@@ -293,7 +300,7 @@ export default function ServicesSection() {
                 <div className="mt-auto rounded-b-2xl bg-orange-500 hover:bg-orange-600 transition-colors duration-200">
                   <button
                     onClick={() => toggleCard(index)}
-                    className="w-full text-white py-3 px-6 font-medium flex items-center justify-center space-x-2"
+                    className="w-full text-white py-3 px-6 font-medium flex items-center justify-center space-x-2 text-sm md:text-base"
                   >
                     <span>{isExpanded ? "Tutup" : "Lihat Layanan"}</span>
                     <ChevronDown

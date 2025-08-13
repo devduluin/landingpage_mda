@@ -1,52 +1,34 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import { BsInstagram } from "react-icons/bs";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
-const TwoColumnFooter = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
+export interface TwoColumnFooterProps {
+  scrollContainerRef: React.RefObject<HTMLDivElement | null>;
+}
+
+const TwoColumnFooter: React.FC<TwoColumnFooterProps> = ({
+  scrollContainerRef,
+}) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isVisible = useIntersectionObserver(sectionRef, {
+    threshold: 0.1,
+    triggerOnce: false,
+  });
 
   const scrollToTop = () => {
-    const c = document.documentElement.scrollTop || document.body.scrollTop;
-    if (c > 0) {
-      window.requestAnimationFrame(scrollToTop);
-      window.scrollTo(0, c - c / 8);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <footer
       ref={sectionRef}
-      //     className="
-      //   bg-gradient-to-r
-      //   from-gray-900
-      //   via-gray-700
-      //   to-gray-900
-      //   text-white
-      //   py-12
-      //   relative
-      //   overflow-hidden
-      // "
-      className="bg-gradient-to-br from-gray-900 via-gray-800 to-zinc-900 text-white py-12 relative overflow-hidden"
+      className="bg-gradient-to-br from-gray-900 via-gray-800 to-zinc-900 text-white py-12 md:py-16 relative overflow-hidden"
     >
       {/* Background subtle pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -54,18 +36,18 @@ const TwoColumnFooter = () => {
       </div>
 
       <div className="container mx-auto px-4 max-w-7xl relative z-10">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-content gap-8">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 text-center lg:text-left">
           {/* Left Side - Logo */}
           <div
             onClick={scrollToTop}
-            className={`transition-all duration-700 cursor-pointer ${
+            className={`transition-all duration-700 cursor-pointer mx-auto lg:mx-0 ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-10"
             }`}
           >
             <Image
-              src="/MDAP_LOGO_WHITE.svg"
+              src="/MDA PARTNER_WHITE.svg"
               alt="Logo MDAP"
               width={150}
               height={60}
@@ -75,7 +57,7 @@ const TwoColumnFooter = () => {
 
           {/* Right Side - Contact Info */}
           <div
-            className={`transition-all md:ml-28 duration-700 delay-150 ${
+            className={`transition-all duration-700 delay-150 ${
               isVisible
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-10"
@@ -85,10 +67,10 @@ const TwoColumnFooter = () => {
               Kontak Kami
             </h3>
 
-            <div className="space-y-1">
+            <div className="space-y-2">
               {/* Address */}
-              <div className="flex items-start space-x-3 text-gray-300 hover:text-[#158576] transition-colors">
-                <MapPin className="w-5 h-5 text-[#158576] mt-1 flex-shrink-0" />
+              <div className="flex items-start justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
+                <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
                 <a
                   href="https://www.google.com/maps/place/Duluin+Head+Office/@-6.9627161,107.6282733,1149m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e68e99345c05791:0xa2d8b531d46ce9a!8m2!3d-6.9627161!4d107.6308482!16s%2Fg%2F11lmrll7d8?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
@@ -101,8 +83,8 @@ const TwoColumnFooter = () => {
               </div>
 
               {/* Phone (WhatsApp) */}
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-[#158576] transition-colors">
-                <Phone className="w-5 h-5 text-[#158576] flex-shrink-0" />
+              <div className="flex items-center justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
+                <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a
                   href="https://wa.me/6281910031000"
                   target="_blank"
@@ -114,8 +96,8 @@ const TwoColumnFooter = () => {
               </div>
 
               {/* Email (Gmail compose) */}
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-[#158576] transition-colors">
-                <Mail className="w-5 h-5 text-[#158576] flex-shrink-0" />
+              <div className="flex items-center justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
+                <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a
                   href="https://mail.google.com/mail/?view=cm&to=mdapartner.id@gmail.com"
                   target="_blank"
@@ -127,8 +109,8 @@ const TwoColumnFooter = () => {
               </div>
 
               {/* Instagram */}
-              <div className="flex items-center space-x-3 text-gray-300 hover:text-[#158576] transition-colors">
-                <BsInstagram className="w-5 h-5 text-[#158576] flex-shrink-0" />
+              <div className="flex items-center justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
+                <BsInstagram className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a
                   href="https://instagram.com/mdapartner.id"
                   target="_blank"
@@ -157,4 +139,4 @@ const TwoColumnFooter = () => {
   );
 };
 
-export { TwoColumnFooter };
+export default TwoColumnFooter;

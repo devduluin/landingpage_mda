@@ -1,91 +1,62 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const CoverageAreaSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
+  const isVisible = useIntersectionObserver(sectionRef, {
+    threshold: 0.2,
+    triggerOnce: false,
+  });
 
   return (
-    <section ref={sectionRef} className="py-20 bg-white overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="max-w-6xl mx-auto">
           <div
-            className={`text-center mb-16 transition-all duration-1000 ${
+            className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${
               isVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             }`}
           ></div>
 
-          <div className="flex flex-col lg:flex-row items-center gap-12">
+          <div className="flex flex-col lg:flex-row items-center gap-8 md:gap-12">
             <div
-              className={`lg:w-1/2 w-full transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              className={`w-full lg:w-1/2 transition-all duration-1000 ease-out ${
+                isVisible
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-90"
               }`}
             >
-              <div className="relative bg-gray-100 p-4 sm:p-8 rounded-2xl shadow-xs border border-gray-200">
-                <div className="relative w-full h-72 sm:h-72 bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl overflow-hidden">
-                  <Image
-                    src="/images/map.svg"
-                    alt="Map"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-              </div>
+              <Image
+                src="/images/map.svg"
+                alt="Map"
+                className="hover:shadow-xl shadow-md rounded-2xl md:rounded-[50px] transition-all duration-300"
+                width={800}
+                height={600}
+                style={{ objectFit: "contain" }}
+              />
             </div>
 
             <div
-              className={`lg:w-1/2 w-full transition-all duration-1000 ${
+              className={`lg:w-1/2 w-full text-center lg:text-left transition-all duration-1000 delay-200 ${
                 isVisible
                   ? "opacity-100 translate-x-0"
                   : "opacity-0 -translate-x-10"
               }`}
             >
-              <div className="grid grid-rows-2 gap-4">
-                <h2 className="text-3xl text-gray-700 font-bold">
+              <div className="grid grid-rows-2 gap-4 text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl text-gray-700 font-bold">
                   Jangkauan Area{" "}
                   <span className="text-orange-500">MDA Partner</span>
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-base md:text-lg text-gray-600">
                   Kami hadir untuk memenuhi kebutuhan SDM Anda di seluruh
                   wilayah Jabodetabek. Percayakan pencarian tenaga kerja terbaik
                   kepada MDA Partner!
-                </p>
-              </div>
-
-              <div
-                className={`mt-8 p-5 bg-orange-50 rounded-lg border border-orange-200 transition-all duration-500 delay-300 ${
-                  isVisible ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                <p className="text-orange-800 text-sm font-medium text-center">
-                  💼 Melayani lebih dari 6 kota besar di Indonesia dan terus
-                  berkembang!
                 </p>
               </div>
             </div>

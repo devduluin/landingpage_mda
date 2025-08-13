@@ -8,8 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  // TODO: Ganti 'https://mda-partner.com' dengan URL domain production Anda
-  metadataBase: new URL("https://mda-partner.com"),
+  metadataBase: new URL("https://mitradaksa.com"),
   title: "MDA Partner | Solusi Tenaga Kerja & Outsourcing Profesional",
   description:
     "MDA Partner menyediakan solusi tenaga kerja profesional dan layanan outsourcing terpercaya di Indonesia. Tingkatkan efisiensi bisnis Anda dengan jasa rekrutmen, manajemen HR, dan alih daya kami. Hubungi sekarang!",
@@ -27,8 +26,13 @@ export const metadata: Metadata = {
     "indonesia",
     "mda partner",
     "pt rasa aksata nusantara",
+    "duluin",
+    "partner",
+    "jasa outsourcing",
+    "job hunter",
+    "job fair",
   ],
-  authors: [{ name: "MDA Partner", url: "https://mda-partner.com" }],
+  authors: [{ name: "MDA Partner", url: "https://mitradaksa.com" }],
   creator: "MDA Partner",
   publisher: "MDA Partner",
   alternates: {
@@ -38,7 +42,7 @@ export const metadata: Metadata = {
     title: "MDA Partner | Solusi Tenaga Kerja & Outsourcing Profesional",
     description:
       "Tingkatkan efisiensi bisnis Anda dengan solusi tenaga kerja profesional dan layanan outsourcing terpercaya dari MDA Partner.",
-    url: "https://mda-partner.com",
+    url: "https://mitradaksa.com",
     siteName: "MDA Partner",
     images: [
       {
