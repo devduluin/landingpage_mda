@@ -159,7 +159,7 @@ const HeroSection: React.FC = () => {
     relative cursor-pointer overflow-hidden
     w-full sm:w-auto
     border md:border-0
-    md:bg-[#1a1a1a]
+    bg-[#1a1a1a]
     text-orange-300
     font-semibold px-6 py-3 md:px-8 md:py-4 !rounded-full
     text-sm md:text-base
