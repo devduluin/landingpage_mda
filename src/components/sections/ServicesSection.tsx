@@ -1,16 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  Car,
-  HardHat,
-  Shield,
-  User,
-  Truck,
-  Wrench,
-  Users,
-  Eye,
-  Building,
-  UserCheck,
-  Headphones,
   ChevronDown,
   Check,
 } from "lucide-react";
@@ -228,7 +217,6 @@ export default function ServicesSection() {
           {services.map((service, index) => {
             const isExpanded = expandedCards.has(index);
             const isAnimated = animatedCards.has(index);
-            const Icon = service.icon;
 
             return (
               <div

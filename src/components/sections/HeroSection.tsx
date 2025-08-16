@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import Image from "next/image";
+import { GrDocumentPdf } from "react-icons/gr";
 
 const HeroSection: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -58,9 +59,29 @@ const HeroSection: React.FC = () => {
 
           <div className="flex items-center px-4 md:px-12 py-8 md:py-0 relative z-10 rounded-4xl md:rounded-[90px]">
             <div className="grid lg:grid-cols-2 gap-6 items-center">
-              {/* Left Content */}
+              {/* Image Container (Appears first on mobile) */}
+              <div className="relative flex justify-center items-center h-52 sm:h-64 md:h-80 lg:h-[400px] overflow-hidden lg:order-last">
+                <div
+                  className={`relative pointer-events-none h-full md:h-[105%] w-full transform transition duration-1000 ${
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "translate-x-20 opacity-0"
+                  }`}
+                  style={{ transitionDelay: "300ms" }}
+                >
+                  <Image
+                    src="/images/employees.svg"
+                    alt="Employees"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 1023px) 80vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* Text Content (Appears second on mobile) */}
               <div
-                className={`text-center lg:text-left text-white p-1 space-y-6 md:space-y-8 transform transition-all duration-1000 ${
+                className={`text-center lg:text-left text-white space-y-4 md:space-y-8 transform transition-all duration-1000 ${
                   isVisible
                     ? "translate-x-0 opacity-100"
                     : "-translate-x-12 opacity-0"
@@ -88,46 +109,120 @@ const HeroSection: React.FC = () => {
                 </p>
 
                 {/* CTA Buttons */}
-                <Button
-                  size="lg"
-                  onClick={() =>
-                    window.open("https://wa.me/6281910031000", "_blank")
-                  }
-                  className="
+                <div className="flex flex-col md:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                 {/* Button WhatsApp - 3D Neumorphism dengan Transisi Halus */}
+{/* WhatsApp Button - Improved smooth transitions */}
+<Button
+  size="lg"
+  onClick={() =>
+    window.open("https://wa.me/6281910031000", "_blank")
+  }
+  className="
     relative cursor-pointer overflow-hidden
+    w-full sm:w-auto
     bg-gradient-to-r from-orange-500 to-orange-600
-    hover:from-orange-600 hover:to-orange-700
     text-white font-semibold px-6 py-3 md:px-8 md:py-4 !rounded-full
-    transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]
-    hover:scale-105 active:scale-97
-    before:content-[''] before:absolute before:inset-0 before:rounded-full
-    before:shadow-[inset_0_0_8px_theme(colors.orange.400)]
-    before:transition-all before:duration-500
-    hover:before:shadow-[inset_0_0_20px_theme(colors.orange.400)]
     text-sm md:text-base
+    z-10
+    
+    transition-all duration-300 ease-out
+    transform-gpu
+    
+    shadow-[6px_6px_12px_rgba(0,0,0,0.3),-6px_-6px_12px_rgba(255,255,255,0.15)]
+    
+    hover:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.25),inset_-6px_-6px_12px_rgba(255,255,255,0.1)]
+    
+    active:shadow-[inset_2px_2px_6px_rgba(0,0,0,0.5),inset_-2px_-2px_6px_rgba(255,255,255,0.05)]
+    active:scale-[0.99]
+    active:transition-all active:duration-100
+    
+    before:content-[''] before:absolute before:top-0 before:left-0 
+    before:w-0 before:h-full before:rounded-full
+    before:bg-gradient-to-r before:fill-orange-600 before:to-orange-300
+    before:transition-all before:duration-500 before:ease-in-out
+    before:z-[-1]
+    hover:before:w-full
   "
-                >
-                  Bergabung Bersama Kami!
-                </Button>
-              </div>
+>
+  <span className="relative z-10 flex items-center gap-2">
+    Bergabung Bersama Kami!
+  </span>
+</Button>
 
-              {/* Right Content - Image Container */}
-              <div className="relative flex justify-center items-center h-64 md:h-[400px] overflow-hidden mt-8 lg:mt-0">
-                <div
-                  className={`relative pointer-events-none h-full md:h-[105%] w-full transform transition duration-1000 ${
-                    isVisible
-                      ? "translate-x-0 opacity-100"
-                      : "translate-x-20 opacity-0"
-                  }`}
-                  style={{ transitionDelay: "300ms" }}
-                >
-                  <Image
-                    src="/images/employees.svg"
-                    alt="Employees"
-                    fill
-                    className="object-contain"
-                    sizes="(max-width: 768px) 80vw, 50vw"
-                  />
+{/* PDF Company Profile Button - Improved with React PDF icon and smooth animations */}
+<Button
+  size="lg"
+  onClick={() =>
+    window.open("/view-profile", "_blank")
+  }
+  className="
+    relative cursor-pointer overflow-hidden
+    w-full sm:w-auto
+    border md:border-0
+    md:bg-[#1a1a1a]
+    text-orange-300
+    font-semibold px-6 py-3 md:px-8 md:py-4 !rounded-full
+    text-sm md:text-base
+    z-10
+    group
+    
+    transition-all duration-300 ease-out
+    transform-gpu
+    
+    md:shadow-[6px_6px_12px_rgba(0,0,0,0.4),-6px_-6px_12px_rgba(255,255,255,0.05)]
+    
+    hover:md:shadow-[inset_6px_6px_12px_rgba(0,0,0,0.3),inset_-6px_-6px_12px_rgba(255,255,255,0.1)]
+    hover:text-white
+    hover:border-transparent
+    
+    active:md:shadow-[inset_4px_4px_10px_rgba(0,0,0,0.5),inset_-4px_-4px_10px_rgba(255,255,255,0.05)]
+    active:bg-orange-500
+    active:md:bg-inherit
+    active:text-white
+    active:scale-[0.99]
+    active:transition-all active:duration-100
+    active:border-transparent
+    
+    before:content-[''] before:absolute before:top-0 before:left-0 
+    before:w-0 before:h-full before:rounded-full
+    before:bg-gradient-to-r before:fill-orange-400/90 before:to-orange-500/90
+    before:transition-all before:duration-500 before:ease-in-out
+    before:z-[-1]
+    hover:before:w-full
+  "
+>
+  <span className="relative z-10 flex items-center gap-2">
+    {/* Icon Container dengan animasi slide */}
+    <div className="relative w-4 h-4 overflow-hidden">
+      {/* Download Arrow - Default State (visible) */}
+      <svg 
+        className="
+          absolute top-0 left-0 w-4 h-4 
+          transition-transform duration-500 ease-in-out 
+          transform translate-x-0 
+          group-hover:translate-x-6 group-hover:opacity-0
+        " 
+        fill="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+      </svg>
+
+      {/* PDF Icon - Hidden initially, slides in from left on hover */}
+      <div className="
+        absolute top-0 left-0 w-4 h-4
+        transition-transform duration-500 ease-in-out 
+        transform -translate-x-6 opacity-0
+        group-hover:translate-x-0 group-hover:opacity-100
+      ">
+        <GrDocumentPdf className="w-4 h-4" />
+      </div>
+    </div>
+    
+    Lihat Company Profile
+  </span>
+</Button>
+
                 </div>
               </div>
             </div>

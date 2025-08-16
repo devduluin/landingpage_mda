@@ -1,49 +1,14 @@
-<svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" width="200" height="auto">
   <defs>
-    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF4500"/>
-      <stop offset="100%" stop-color="#FF6B35"/>
-    </linearGradient>
-    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF6B35"/>
-      <stop offset="100%" stop-color="#FF8C42"/>
-    </linearGradient>
-    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#FF8C42"/>
-      <stop offset="100%" stop-color="#FFA500"/>
-    </linearGradient>
+    <style>
+      .cls-1 { fill: #f04e23; }
+      .cls-2 { fill: #010101; }
+      .cls-3 { fill: #f57f20; }
+    </style>
   </defs>
-
-  <!-- Kiri (bawah runcing) -->
-  <path d="M20 20 H65 L45 110 L20 100 Z" fill="url(#grad1)">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; 3,-1; 0,0"
-      dur="3s" repeatCount="indefinite"
-      keyTimes="0;0.5;1"
-      keySplines=".42,0,.58,1; .42,0,.58,1" calcMode="spline"/>
-  </path>
-
-  <!-- Tengah (bawah runcing) -->
-  <path d="M75 20 H120 L100 110 L75 100 Z" fill="url(#grad2)">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; -2,1; 0,0"
-      dur="3s" begin="0.4s" repeatCount="indefinite"
-      keyTimes="0;0.5;1"
-      keySplines=".42,0,.58,1; .42,0,.58,1" calcMode="spline"/>
-  </path>
-
-  <!-- Kanan (bawah runcing) -->
-  <path d="M130 20 H175 L155 110 L130 100 Z" fill="url(#grad3)">
-    <animateTransform attributeName="transform" type="translate"
-      values="0,0; -3,-1; 0,0"
-      dur="3s" begin="0.8s" repeatCount="indefinite"
-      keyTimes="0;0.5;1"
-      keySplines=".42,0,.58,1; .42,0,.58,1" calcMode="spline"/>
-  </path>
-
-  <animateTransform attributeName="transform" type="scale"
-    values="1;1.02;1"
-    dur="4s" repeatCount="indefinite"
-    keyTimes="0;0.5;1"
-    keySplines=".42,0,.58,1; .42,0,.58,1" calcMode="spline"/>
+  <g transform="scale(0.85) translate(27,20)">
+    <path class="cls-1" d="M47.73,32.17L0,211.45h77.83L134.11,0h-42.37c-21.62,0-38.79,12.55-44.02,32.17Z"/>
+    <polygon class="cls-1" points="155.94 0 127.8 105.73 177.48 211.45 233.77 0 155.94 0"/>
+    <path class="cls-3" d="M256.18,0l-56.29,211.45h42.37c21.62,0,38.79-12.55,44.02-32.17l36.13-135.72c5.41-20.33-14.01-43.57-36.41-43.57h-29.81Z"/>
+  </g>
 </svg>

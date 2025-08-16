@@ -6,31 +6,22 @@ import dynamic from "next/dynamic";
 
 import { TwoColumnFooterProps } from "@/components/layout/Footer";
 
-const HeroSection = dynamic(() => import("@/components/sections/HeroSection"), {
-  ssr: false,
-});
+const HeroSection = dynamic(() => import("@/components/sections/HeroSection"));
 const MDAPartnerSection = dynamic(
-  () => import("@/components/sections/MDAPartnerSection"),
-  { ssr: false }
+  () => import("@/components/sections/MDAPartnerSection")
 );
 const ServicesSection = dynamic(
-  () => import("@/components/sections/ServicesSection"),
-  { ssr: false }
+  () => import("@/components/sections/ServicesSection")
 );
 const ClientsSection = dynamic(
-  () => import("@/components/sections/ClientsSection"),
-  { ssr: false }
+  () => import("@/components/sections/ClientsSection")
 );
 const CoverageAreaSection = dynamic(
-  () => import("@/components/sections/CoverageAreaSection"),
-  { ssr: false }
+  () => import("@/components/sections/CoverageAreaSection")
 );
-const CTASection = dynamic(() => import("@/components/sections/CTASection"), {
-  ssr: false,
-});
+const CTASection = dynamic(() => import("@/components/sections/CTASection"));
 const TwoColumnFooter = dynamic<TwoColumnFooterProps>(
-  () => import("@/components/layout/Footer"),
-  { ssr: false }
+  () => import("@/components/layout/Footer")
 );
 
 const MDAPartnerWebsite: React.FC = () => {

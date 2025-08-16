@@ -25,7 +25,7 @@ const MDALogo: React.FC<MDALogoProps> = ({
       // Mulai animasi pertama setelah mount
       const initialTimer = setTimeout(() => {
         setIsActive(true);
-      }, 500);
+      }, 300);
 
       // Setup interval untuk looping yang smooth
       const loopInterval = setInterval(() => {
@@ -35,7 +35,7 @@ const MDALogo: React.FC<MDALogoProps> = ({
         setTimeout(() => {
           setIsActive(true);
         }, 800);
-      }, 20000); // Loop setiap 6 detik (4s animasi + 2s pause)
+      }, 10000);
 
       return () => {
         clearTimeout(initialTimer);

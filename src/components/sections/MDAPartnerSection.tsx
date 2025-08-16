@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { FaUsers } from "react-icons/fa";
@@ -27,7 +27,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     threshold: 0.3,
     triggerOnce: false,
   });
-  const randomDelay = Math.floor(Math.random() * 500) + 100; // 100–600ms
+  // Hydration Error Fix: Generate random delay only on the client-side
+  const [delay, setDelay] = useState(0);
+
+  useEffect(() => {
+    setDelay(Math.floor(Math.random() * 500) + 100); // 100–600ms
+  }, []);
 
   return (
     <div
@@ -42,7 +47,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             : "translate-x-16 opacity-0"
         }
       `}
-      style={{ transitionDelay: `${randomDelay}ms` }}
+      style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="relative p-6 md:p-8 rounded-[30px] bg-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
         {/* Moving Border Animation (Non-hover only) */}
@@ -105,11 +110,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 const MDAPartnerSection: React.FC = () => {
   // Ref for the entire section, for elements that need to stay visible longer
   const sectionRef = useRef<HTMLElement>(null);
-  const isVisible = useIntersectionObserver(sectionRef, {
-    threshold: 0, // Animate as soon as a single pixel is visible
-    triggerOnce: false,
-    rootMargin: "0px 0px -150px 0px", // Start animation 150px before it's fully in view from the bottom
-  });
 
   // A separate ref and observer specifically for the header text section
   const headerRef = useRef<HTMLDivElement>(null);
@@ -122,7 +122,7 @@ const MDAPartnerSection: React.FC = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const isImageVisible = useIntersectionObserver(imageRef, {
     threshold: 0.3, // Animate when 30% of the image is visible
-    triggerOnce: false,
+    triggerOnce: true, // <-- THE FIX: Only trigger the animation once
     rootMargin: "0px 0px -50px 0px", // Start animation a bit before it's fully in view
   });
 
@@ -243,12 +243,12 @@ const MDAPartnerSection: React.FC = () => {
             {/* Center Image */}
             <div
               ref={imageRef}
-              className={`flex justify-center items-center my-8 lg:my-0 lg:col-span-1 md:relative md:top-1/2
+              className={`flex justify-center items-center my-8 lg:my-0 lg:col-span-1 lg:self-center
     transform transition-all duration-1000 ease-out
     ${
       isImageVisible
-        ? "translate-y-0 md:-translate-y-1/2 opacity-100"
-        : "translate-y-1 opacity-0"
+        ? "translate-y-0 opacity-100"
+        : "translate-y-24 opacity-0"
     }`}
             >
               <Image
