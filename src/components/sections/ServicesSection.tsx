@@ -202,7 +202,7 @@ export default function ServicesSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-700 mb-4">
+          <h2 id="produk" className="scroll-mt-10 scroll-smooth text-2xl md:text-3xl font-bold text-gray-700 mb-4">
             <span className="text-orange-500">MDA Partner</span> Menyediakan
             Aneka Jasa
           </h2>

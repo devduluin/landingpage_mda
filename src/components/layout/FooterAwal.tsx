@@ -100,11 +100,11 @@ const Footer = () => {
                   <span>087700231000</span>
                 </a>
                 <a
-                  href="mailto:hello@duluin.com"
+                  href="mailto:business@mitradaksa.com"
                   className="flex items-center space-x-2 text-gray-300 hover:text-orange-400 transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  <span>hello@duluin.com</span>
+                  <span>business@mitradaksa.com</span>
                 </a>
               </div>
             </div>

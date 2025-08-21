@@ -47,7 +47,7 @@ const CTASection = () => {
             <Button
               size="lg"
               onClick={() =>
-                window.open("https://wa.me/6281910031000", "_blank")
+                window.open("https://wa.me/6281914710001", "_blank")
               }
               className="cursor-pointer
     bg-gradient-to-r from-orange-500 to-orange-600 

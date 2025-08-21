@@ -19,7 +19,7 @@ export default function CompanyProfileViewer() {
       }}
     >
       <iframe
-        src="/mda-compro/MDA Partner Company Profile.pdf"
+        src="/mda-compro/MDA Partner Company Profile_New Update.pdf"
         style={{ width: "100%", height: "100%", border: "none" }}
         title="MDA Partner Company Profile"
       />

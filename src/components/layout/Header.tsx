@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, RefObject } from "react";
+import Link from "next/link";
 import { BsWhatsapp } from "react-icons/bs";
 import MDALogo from "../animated/MDALogoAnimate";
 
@@ -16,7 +17,7 @@ const NavLink: React.FC<NavLinkProps> = ({
   isActive = false,
 }) => {
   return (
-    <a
+    <Link
       href={href}
       className={`
         relative px-4 py-2 rounded-lg font-medium transition-all duration-300 ease-in-out
@@ -32,14 +33,14 @@ const NavLink: React.FC<NavLinkProps> = ({
       `}
     >
       {children}
-    </a>
+    </Link>
   );
 };
 
 const WhatsAppButton: React.FC = () => {
   return (
     <button
-  onClick={() => window.open("https://wa.me/6281910031000", "_blank")}
+  onClick={() => window.open("https://wa.me/6281914710001", "_blank")}
   className={`
     flex group cursor-pointer relative overflow-hidden items-center space-x-2
     px-4 py-2.5 rounded-xl
@@ -195,8 +196,9 @@ const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
   }, [scrollContainerRef]);
 
   const navItems = [
-    { label: "Produk", href: "#produk" },
-    { label: "Tentang Kami", href: "#tentang" },
+    { label: "Beranda", href: "/" },
+    { label: "Produk", href: "/produk" },
+    { label: "Tentang Kami", href: "/tentang-kami" },
   ];
 
   return (
@@ -273,7 +275,7 @@ const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
             <nav className="container mx-auto px-4 max-w-7xl py-4">
               <div className="space-y-2">
                 {navItems.map((item, index) => (
-                  <a
+                  <Link
                     key={item.label}
                     href={item.href}
                     className="
@@ -291,7 +293,7 @@ const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
                 <div className="pt-4 border-t border-gray-100">
                   <WhatsAppButton />

@@ -72,13 +72,13 @@ const TwoColumnFooter: React.FC<TwoColumnFooterProps> = ({
               <div className="flex items-start justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
                 <MapPin className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
                 <a
-                  href="https://www.google.com/maps/place/Duluin+Head+Office/@-6.9627161,107.6282733,1149m/data=!3m2!1e3!4b1!4m6!3m5!1s0x2e68e99345c05791:0xa2d8b531d46ce9a!8m2!3d-6.9627161!4d107.6308482!16s%2Fg%2F11lmrll7d8?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D"
+                  href="https://maps.app.goo.gl/g7boXXt8f2tZ8NNt6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm leading-relaxed"
+                  className="text-sm leading-relaxed md:max-w-xl"
                 >
-                  Jl. Batununggal Mulia X No.9, Mengger, Kec. Bandung Kidul,
-                  Kota Bandung, Jawa Barat 40267
+                  Menara Batavia, Lantai 8, Jl. K.H. Mas Mansyur No.Kav. 126, Karet Tengsin, Kecamatan Tanah Abang,
+                  Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10250
                 </a>
               </div>
 
@@ -86,12 +86,12 @@ const TwoColumnFooter: React.FC<TwoColumnFooterProps> = ({
               <div className="flex items-center justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
                 <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a
-                  href="https://wa.me/6281910031000"
+                  href="https://wa.me/6281914710001"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm"
                 >
-                  0819 1003 1000
+                  0819 1471 0001
                 </a>
               </div>
 
@@ -99,12 +99,12 @@ const TwoColumnFooter: React.FC<TwoColumnFooterProps> = ({
               <div className="flex items-center justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
                 <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a
-                  href="https://mail.google.com/mail/?view=cm&to=mdapartner.id@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&to=business@mitradaksa.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm"
                 >
-                  mdapartner.id@gmail.com
+                  business@mitradaksa.com
                 </a>
               </div>
 
@@ -131,7 +131,7 @@ const TwoColumnFooter: React.FC<TwoColumnFooterProps> = ({
           }`}
         >
           <p className="text-gray-500 text-sm text-center">
-            © 2025 MDA Partner - PT. Rasa Aksata Nusantara. All Rights Reserved.
+            © 2025 MDA Partner - PT. Mitra Daksa Anarawata. All Rights Reserved.
           </p>
         </div>
       </div>

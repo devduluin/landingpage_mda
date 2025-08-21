@@ -94,7 +94,7 @@ const CoverageAreaSection = () => {
               </div>
 
               {/* CTA Button */}
-              <div className="pt-4">
+              {/* <div className="pt-4">
                 <Button
                   size="lg"
                   onClick={() =>
@@ -131,9 +131,7 @@ const CoverageAreaSection = () => {
                   "
                 >
                   <span className="relative z-10 flex items-center justify-center gap-2">
-                    {/* Icon Animation Container */}
                     <div className="relative w-4 h-4 overflow-hidden flex-shrink-0">
-                      {/* Download Arrow - Default State */}
                       <svg 
                         className="
                           absolute top-0 left-0 w-4 h-4 
@@ -148,7 +146,6 @@ const CoverageAreaSection = () => {
                         <path d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
                       </svg>
 
-                      {/* PDF Icon - Hover State */}
                       <div className="
                         absolute top-0 left-0 w-4 h-4
                         transition-all duration-500 ease-in-out 
@@ -167,7 +164,7 @@ const CoverageAreaSection = () => {
                     </span>
                   </span>
                 </Button>
-              </div>
+              </div> */}
             </div>
 
           </div>
