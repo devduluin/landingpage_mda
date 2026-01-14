@@ -350,7 +350,7 @@ const Product: React.FC = () => {
               Hubungi kami untuk konsultasi gratis.
             </p>
             <button 
-              onClick={() => window.open("https://wa.me/6281914710001", "_blank")} 
+              onClick={() => window.open("https://wa.me/6285121048417", "_blank")} 
               className="bg-orange-500 hover:bg-orange-600 text-white px-8 lg:px-12 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 text-base lg:text-lg"
             >
               Hubungi Kami Sekarang

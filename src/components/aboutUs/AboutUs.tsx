@@ -25,7 +25,7 @@ const AboutUs: React.FC = () => {
           <div className="flex-1">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">Tentang Kami</h2>
             <p className="text-gray-600 leading-relaxed max-w-2xl">
-              Mitra Dalas Akarswasta (MDA) adalah penyedia tenaga kerja dan outsourcing yang 
+              Mitra Daksa Anarawata (MDA) adalah penyedia tenaga kerja dan outsourcing yang 
               didirikan pada tahun 2025 di Bandung. Tujuan kami adalah menjadi mitra strategis dalam 
               membantu kebutuhan perusahaan akan SDM yang berkualitas dan kompeten.
             </p>

@@ -40,7 +40,7 @@ const NavLink: React.FC<NavLinkProps> = ({
 const WhatsAppButton: React.FC = () => {
   return (
     <button
-  onClick={() => window.open("https://wa.me/6281914710001", "_blank")}
+  onClick={() => window.open("https://wa.me/6285121048417", "_blank")}
   className={`
     flex group cursor-pointer relative overflow-hidden items-center space-x-2
     px-4 py-2.5 rounded-xl

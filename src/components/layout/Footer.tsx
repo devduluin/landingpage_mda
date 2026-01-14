@@ -86,7 +86,7 @@ const TwoColumnFooter: React.FC<TwoColumnFooterProps> = ({
               <div className="flex items-center justify-center lg:justify-start space-x-3 text-gray-300 hover:text-orange-500 transition-colors">
                 <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
                 <a
-                  href="https://wa.me/6281914710001"
+                  href="https://wa.me/6285121048417"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm"
