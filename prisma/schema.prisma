@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String       @id @default(cuid())
+  email        String       @unique
+  name         String?
+  password     String
+  avatar       String?
+  phone        String?
+  bio          String?      @db.Text
+  role         String       @default("admin")
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  deletedAt    DateTime?
+
+  @@map("users")
+}
+
+model Lead {
+  id          String   @id @default(cuid())
+  fullName    String   @map("full_name")
+  email       String   @unique
+  phone       String
+  companyName String   @map("company_name")
+  industry    String
+  service     Json    
+  message     String?  @db.Text
+  createdAt   DateTime @default(now())
+  deletedAt   DateTime?
+
+  @@map("leads")
+}
+
+model DriverRegistration {
+  id              String    @id @default(cuid())
+  fullName        String    @map("full_name")
+  ktpNumber       String    @map("ktp_number") @unique
+  birthDate       DateTime  @map("birth_date")
+  email           String
+  phoneNumber     String    @map("phone_number")
+  completeAddress String    @map("complete_address") @db.Text
+  serviceType     String    @map("service_type")
+  fileCv          String?   @map("file_cv")
+  status          String    @default("pending")
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  @@map("driver_registrations")
+}
