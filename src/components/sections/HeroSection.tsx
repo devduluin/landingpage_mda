@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { GrDocumentPdf } from "react-icons/gr";
 
@@ -90,9 +90,9 @@ const HeroSection: React.FC = () => {
                 {/* Main Heading with Typewriter Effect */}
                 <div className="space-y-2 mb-4">
                   <h1 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight">
-                    <span className="block">
-                      Mudahkan Kebutuhan SDM Anda dengan
-                    </span>
+                    <span className="mr-1">
+                      Mudahkan Kebutuhan SDM Anda dengan 
+                    </span> 
                     <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-yellow-500 bg-clip-text text-transparent">
                       MDA Partner
                     </span>

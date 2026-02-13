@@ -198,6 +198,7 @@ const Header: React.FC<HeaderProps> = ({ scrollContainerRef }) => {
   const navItems = [
     { label: "Beranda", href: "/" },
     { label: "Produk", href: "/produk" },
+    { label: "Pendaftaran Mitra", href: "/pendaftaran-mitra" },
     { label: "Tentang Kami", href: "/tentang-kami" },
   ];
 

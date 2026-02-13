@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";

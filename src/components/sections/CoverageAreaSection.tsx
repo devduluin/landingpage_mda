@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 import { GrDocumentPdf } from "react-icons/gr";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 const CoverageAreaSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
