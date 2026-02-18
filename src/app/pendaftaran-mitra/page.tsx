@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,6 +36,7 @@ type DriverRegistrationForm = z.infer<typeof driverRegistrationSchema>;
 
 export default function PendaftaranDriverPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -82,6 +84,11 @@ export default function PendaftaranDriverPage() {
       });
 
       reset();
+      
+      // Redirect to home page after successful registration
+      setTimeout(() => {
+        router.push('/');
+      }, 1500);
     } catch (error: any) {
       toast.error('Gagal mengirim pendaftaran', {
         description: error.message || 'Terjadi kesalahan, silakan coba lagi.',
