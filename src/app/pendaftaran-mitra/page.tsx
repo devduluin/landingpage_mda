@@ -56,7 +56,7 @@ export default function PendaftaranDriverPage() {
 
     try {
       const formData = new FormData();
-      
+
       // Append all text fields
       Object.entries(data).forEach(([key, value]) => {
         if (key === 'fileCv') {
@@ -84,7 +84,7 @@ export default function PendaftaranDriverPage() {
       });
 
       reset();
-      
+
       // Redirect to home page after successful registration
       setTimeout(() => {
         router.push('/');
@@ -131,30 +131,28 @@ export default function PendaftaranDriverPage() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-            {/* Section: Nama Lengkap */}
-            <div className="border-b border-gray-200 pb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Nama Lengkap</h2>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Masukkan Nama Lengkap <span className="text-red-500">*</span>
-                </label>
-                <Input
-                  type="text"
-                  {...register('fullName')}
-                  placeholder="Masukkan Nama Lengkap"
-                  className="h-12"
-                />
-                {errors.fullName && (
-                  <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
-                )}
-              </div>
-            </div>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-2">Informasi Pribadi</h2>
 
-            {/* Section: Nomor KTP & Tanggal Lahir */}
-            <div className="border-b border-gray-200 pb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Nomor KTP</h2>
-              <div className="grid md:grid-cols-2 gap-5">
+            {/* Section: Nama Lengkap */}
+            <div className="border-b border-gray-200 pb-6 space-y-4">
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Masukkan Nama Lengkap <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    type="text"
+                    {...register('fullName')}
+                    placeholder="Masukkan Nama Lengkap"
+                    className="h-12"
+                  />
+                  {errors.fullName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.fullName.message}</p>
+                  )}
+                </div>
+
+                {/* Section: Nomor KTP & Tanggal Lahir */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Masukkan Nomor KTP <span className="text-red-500">*</span>
@@ -185,11 +183,8 @@ export default function PendaftaranDriverPage() {
                   )}
                 </div>
               </div>
-            </div>
 
-            {/* Section: Email & No HP */}
-            <div className="border-b border-gray-200 pb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Email & Nomor HP</h2>
+              {/* Section: Email & No HP */}
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -221,11 +216,8 @@ export default function PendaftaranDriverPage() {
                   )}
                 </div>
               </div>
-            </div>
 
-            {/* Section: Alamat Domisili */}
-            <div className="border-b border-gray-200 pb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Alamat Domisili Lengkap</h2>
+              {/* Section: Alamat Domisili */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Nama Jalan, Nomor Rumah, RT/RW, Kel/Desa, Kecamatan, Kota, Kode Pos
@@ -243,8 +235,8 @@ export default function PendaftaranDriverPage() {
             </div>
 
             {/* Section: Jenis Layanan */}
-            <div className="border-b border-gray-200 pb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">Jenis Layanan</h2>
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-2">Jenis Layanan</h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Pilih jenis layanan yang Anda inginkan <span className="text-red-500">*</span>
@@ -278,8 +270,8 @@ export default function PendaftaranDriverPage() {
             </div>
 
             {/* Section: Upload CV */}
-            <div className="border-b border-gray-200 pb-8">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-6">CV/Daftar Riwayat Hidup</h2>
+            <div className="border-b border-gray-200 pb-6">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-2">CV/Daftar Riwayat Hidup</h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Pilih File CV (PDF, DOC, DOCX, atau Gambar)
@@ -295,7 +287,7 @@ export default function PendaftaranDriverPage() {
             </div>
 
             {/* Section: Syarat dan Ketentuan */}
-            <div className="border-b border-gray-200 pb-8">
+            <div className="border-b border-gray-200 pb-6">
               <div className="flex items-start gap-3">
                 <input
                   type="checkbox"
@@ -304,7 +296,7 @@ export default function PendaftaranDriverPage() {
                   className="mt-1 h-5 w-5 rounded border-gray-300 text-orange-500 focus:ring-orange-500 cursor-pointer"
                 />
                 <label htmlFor="agreedToTerms" className="text-sm text-gray-700 cursor-pointer">
-                  Saya menyetujui <span className="text-orange-500 font-semibold">Syarat dan Ketentuan</span> yang berlaku. 
+                  Saya menyetujui <span className="text-orange-500 font-semibold">Syarat dan Ketentuan</span> yang berlaku.
                   Data yang saya berikan adalah benar dan saya bertanggung jawab atas kebenaran data tersebut.
                   <span className="text-red-500">*</span>
                 </label>

@@ -126,8 +126,8 @@ export default function LeadsPage() {
           <p>Loading leads...</p>
         ) : leads.length === 0 ? (
           <div className="text-center py-12">
-            <h3 className="text-lg font-semibold">No leads yet</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
+            <h3 className="text-lg font-semibold text-gray-500">No leads yet</h3>
+            <p className="mt-2 text-sm text-gray-500">
               Start by adding your first potential client
             </p>
             <Button asChild className="mt-4 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0">
