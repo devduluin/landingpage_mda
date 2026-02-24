@@ -1,6 +1,7 @@
 'use client';
 
 import { Trash, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -9,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   AlertDialog,
   AlertDialogTrigger,
@@ -59,9 +60,12 @@ export default function DriverRegistrationsPage() {
   const [limit, setLimit] = useState(10);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [statusFilter, setStatusFilter] = useState<string>('');
+  const [serviceTypeFilter, setServiceTypeFilter] = useState<string>('');
+  const [dateFrom, setDateFrom] = useState<string>('');
+  const [dateTo, setDateTo] = useState<string>('');
   const [selectedRegistration, setSelectedRegistration] = useState<DriverRegistration | null>(null);
 
-  const fetchRegistrations = async () => {
+  const fetchRegistrations = useCallback(async () => {
     setLoading(true);
     try {
       const queryParams = new URLSearchParams({
@@ -71,6 +75,18 @@ export default function DriverRegistrationsPage() {
 
       if (statusFilter) {
         queryParams.append('status', statusFilter);
+      }
+
+      if (serviceTypeFilter) {
+        queryParams.append('serviceType', serviceTypeFilter);
+      }
+
+      if (dateFrom) {
+        queryParams.append('dateFrom', dateFrom);
+      }
+
+      if (dateTo) {
+        queryParams.append('dateTo', dateTo);
       }
 
       const res = await fetch(`/api/partner-registrations?${queryParams}`);
@@ -91,7 +107,7 @@ export default function DriverRegistrationsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [page, limit, statusFilter, serviceTypeFilter, dateFrom, dateTo]);
 
   const handleLimitChange = (value: string) => {
     setLimit(parseInt(value));
@@ -100,6 +116,29 @@ export default function DriverRegistrationsPage() {
 
   const handleStatusChange = (value: string) => {
     setStatusFilter(value === 'all' ? '' : value);
+    setPage(1);
+  };
+
+  const handleServiceTypeChange = (value: string) => {
+    setServiceTypeFilter(value === 'all' ? '' : value);
+    setPage(1);
+  };
+
+  const handleDateFromChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDateFrom(e.target.value);
+    setPage(1);
+  };
+
+  const handleDateToChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setDateTo(e.target.value);
+    setPage(1);
+  };
+
+  const handleClearFilters = () => {
+    setStatusFilter('');
+    setServiceTypeFilter('');
+    setDateFrom('');
+    setDateTo('');
     setPage(1);
   };
 
@@ -149,7 +188,7 @@ export default function DriverRegistrationsPage() {
 
   useEffect(() => {
     fetchRegistrations();
-  }, [page, limit, statusFilter]);
+  }, [fetchRegistrations]);
 
   const getStatusBadge = (status: string) => {
     const statusColors: Record<string, string> = {
@@ -176,27 +215,87 @@ export default function DriverRegistrationsPage() {
 
       <div className="bg-white rounded-lg shadow">
         <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-gray-600">Status:</span>
-              <Select value={statusFilter || 'all'} onValueChange={handleStatusChange}>
-                <SelectTrigger className="w-40">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Status Filter */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">Status</label>
+                <Select value={statusFilter || 'all'} onValueChange={handleStatusChange}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
                     <SelectItem value="all">All</SelectItem>
-                  <SelectItem value="pending">Pending</SelectItem>
-                  <SelectItem value="approved">Approved</SelectItem>
-                  <SelectItem value="rejected">Rejected</SelectItem>
-                </SelectContent>
-              </Select>
+                    <SelectItem value="pending">Pending</SelectItem>
+                    <SelectItem value="approved">Approved</SelectItem>
+                    <SelectItem value="rejected">Rejected</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Service Type Filter */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">Service Type</label>
+                <Select value={serviceTypeFilter || 'all'} onValueChange={handleServiceTypeChange}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="Ride Hailing Driver">Ride Hailing Driver</SelectItem>
+                    <SelectItem value="Cleaning Service">Cleaning Service</SelectItem>
+                    <SelectItem value="Security">Security</SelectItem>
+                    <SelectItem value="Laundry">Laundry</SelectItem>
+                    <SelectItem value="Pest Control">Pest Control</SelectItem>
+                    <SelectItem value="Gardening">Gardening</SelectItem>
+                    <SelectItem value="Gondola">Gondola</SelectItem>
+                    <SelectItem value="Driver Kantoran">Driver Kantoran</SelectItem>
+                    <SelectItem value="Front Office">Front Office</SelectItem>
+                    <SelectItem value="Manufacture">Manufacture</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Date From */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">From Date</label>
+                <Input
+                  type="date"
+                  value={dateFrom}
+                  onChange={handleDateFromChange}
+                  max={dateTo || undefined}
+                />
+              </div>
+
+              {/* Date To */}
+              <div className="flex flex-col gap-2">
+                <label className="text-sm font-medium text-gray-700">To Date</label>
+                <Input
+                  type="date"
+                  value={dateTo}
+                  onChange={handleDateToChange}
+                  min={dateFrom || undefined}
+                />
+              </div>
             </div>
 
-            {meta && (
-              <div className="text-sm text-gray-600">
-                Total: {meta.total} registrations
-              </div>
-            )}
+            {/* Clear Filters & Total Count */}
+            <div className="flex items-center justify-between">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleClearFilters}
+                className="text-gray-600 hover:text-gray-900"
+              >
+                Clear Filters
+              </Button>
+
+              {meta && (
+                <div className="text-sm text-gray-600">
+                  Total: {meta.total} registrations
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

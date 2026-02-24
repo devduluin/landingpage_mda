@@ -87,6 +87,9 @@ export async function GET(req: Request) {
         const page = parseInt(searchParams.get('page') || '1');
         const limit = parseInt(searchParams.get('limit') || '10');
         const status = searchParams.get('status');
+        const serviceType = searchParams.get('serviceType');
+        const dateFrom = searchParams.get('dateFrom');
+        const dateTo = searchParams.get('dateTo');
         const skip = (page - 1) * limit;
 
         const whereCondition: any = {
@@ -95,6 +98,26 @@ export async function GET(req: Request) {
 
         if (status) {
             whereCondition.status = status;
+        }
+
+        if (serviceType) {
+            whereCondition.serviceType = serviceType;
+        }
+
+        // Filter by date range
+        if (dateFrom || dateTo) {
+            whereCondition.createdAt = {};
+            
+            if (dateFrom) {
+                whereCondition.createdAt.gte = new Date(dateFrom);
+            }
+            
+            if (dateTo) {
+                // Set to end of day for dateTo
+                const endDate = new Date(dateTo);
+                endDate.setHours(23, 59, 59, 999);
+                whereCondition.createdAt.lte = endDate;
+            }
         }
 
         // Get total count for pagination
