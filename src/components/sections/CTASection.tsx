@@ -35,7 +35,7 @@ const CTASection = () => {
                 : "opacity-0 -translate-x-10"
             }`}
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-normal text-gray-800 mb-2 leading-tight">
+            <h2 className="text-2xl md:text-[2rem] font-normal text-gray-800 mb-2 leading-tight">
               Butuh solusi cepat untuk kebutuhan SDM?
             </h2>
 
