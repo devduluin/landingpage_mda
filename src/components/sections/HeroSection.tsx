@@ -14,7 +14,7 @@ type AdSlide = {
 
 const SLIDES: AdSlide[] = [
   { id: "slide-1", imageSrc: "/images/Banner.png", alt: "Banner 1", fit: "contain" },
-  { id: "slide-2", imageSrc: "/images/testing.jpg", alt: "Banner 2", fit: "contain" },
+  { id: "slide-2", imageSrc: "/images/Banner_2.png", alt: "Banner 2", fit: "contain" },
 ];
 
 const AUTOPLAY_DELAY = 3000;
