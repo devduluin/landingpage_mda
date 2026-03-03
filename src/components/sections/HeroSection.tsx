@@ -38,7 +38,7 @@ export default function HeroSection() {
   useEffect(() => {
     const fetchBanners = async () => {
       try {
-        const res = await fetch('/api/banners?activeOnly=true');
+        const res = await fetch('/public/banners?activeOnly=true');
         const data = await res.json();
 
         if (data.success && data.data.length > 0) {

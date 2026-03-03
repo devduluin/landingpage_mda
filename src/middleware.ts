@@ -39,6 +39,8 @@ export async function middleware(req: NextRequest) {
 
   if (PUBLIC_API.some((p) => pathname.startsWith(p))) return NextResponse.next();
 
+  if (pathname.startsWith("/public")) return NextResponse.next();
+
   if (pathname.startsWith("/dashboard")) {
     if (!token) return NextResponse.redirect(new URL("/login", req.url));
 
