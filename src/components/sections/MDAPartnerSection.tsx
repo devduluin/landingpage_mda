@@ -167,7 +167,7 @@ const MDAPartnerSection: React.FC = () => {
     <>
       <section
         ref={sectionRef}
-        className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden mt-[-10rem]"
+        className="py-16 md:py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden"
       >
         <div className="container mx-auto px-4 max-w-7xl relative z-20">
           {/* Background Decorations */}
@@ -176,7 +176,7 @@ const MDAPartnerSection: React.FC = () => {
 
           <div
             ref={logoBoxRef}
-            className={`border-b border-t border-gray-200 shadow-xs p-6 md:p-8 transition-all duration-700 ease-out ${
+            className={`shadow-xs p-6 md:p-8 transition-all duration-700 ease-out ${
               isLogoBoxVisible
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-4"

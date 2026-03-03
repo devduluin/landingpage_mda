@@ -9,6 +9,7 @@ import {
   UserPlus,
   Users,
   Car,
+  Image as ImageIcon,
 } from 'lucide-react';
 
 const menuItems = [
@@ -16,6 +17,11 @@ const menuItems = [
     title: 'Dashboard',
     href: '/dashboard',
     icon: LayoutDashboard,
+  },
+  {
+    title: 'Banners',
+    href: '/dashboard/banners',
+    icon: ImageIcon,
   },
   {
     title: 'Leads',
