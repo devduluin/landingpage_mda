@@ -31,7 +31,7 @@ export async function POST(req: Request) {
             
             const path = join(uploadDir, filename);
             await writeFile(path, buffer);
-            fileCv = `/uploads/drivers/${filename}`;
+            fileCv = `/api/public/uploads/drivers/${filename}`;
         }
 
         // Create driver registration

@@ -85,10 +85,18 @@ export async function GET(req: Request) {
             take: activeOnly ? undefined : limit,
         });
 
+        // Normalize image URLs for backward compatibility
+        const normalizedBanners = banners.map(banner => ({
+            ...banner,
+            image: banner.image?.startsWith('/uploads/')
+                ? `/api/public${banner.image}`
+                : banner.image
+        }));
+
         return NextResponse.json({
             success: true,
             message: "Berhasil mengambil data banners",
-            data: banners,
+            data: normalizedBanners,
             meta: {
                 page,
                 limit,

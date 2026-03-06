@@ -25,10 +25,18 @@ export async function GET(
             );
         }
 
+        // Normalize image URL for backward compatibility
+        const normalizedBanner = {
+            ...banner,
+            image: banner.image?.startsWith('/uploads/')
+                ? `/api/public${banner.image}`
+                : banner.image
+        };
+
         return NextResponse.json({
             success: true,
             message: "Banner ditemukan",
-            data: banner,
+            data: normalizedBanner,
         });
     } catch {
         return NextResponse.json(
