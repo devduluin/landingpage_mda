@@ -37,26 +37,8 @@ export async function POST(req: Request) {
         const bytes = await file.arrayBuffer();
         const buffer = Buffer.from(bytes);
 
-        if (folder === "banners") {
-            try {
-                // Create a bitmap to get dimensions
-                const { default: sizeOf } = await import('image-size');
-                const dimensions = sizeOf(buffer);
-                
-                if (dimensions.height !== 400) {
-                    return NextResponse.json(
-                        { 
-                            success: false, 
-                            message: `Tinggi gambar harus 400 pixels. Gambar Anda: ${dimensions.width}x${dimensions.height}` 
-                        },
-                        { status: 400 }
-                    );
-                }
-            } catch (dimensionError) {
-                console.error("Dimension validation error:", dimensionError);
-                // Continue without dimension validation if it fails
-            }
-        }
+        // Note: Image dimension validation removed to allow flexible banner sizes
+        // Recommended: 1200-1400px width, 400px height for best quality
 
         // Create unique filename
         const timestamp = Date.now();

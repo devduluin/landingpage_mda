@@ -176,7 +176,7 @@ export default function UpdateBannerPage({ params }: { params: Promise<{ id: str
 
           <div className="space-y-2">
             <Label htmlFor="image">Banner Image</Label>
-            <p className="text-xs text-gray-500 mb-2">Tinggi gambar harus: <strong>400 pixels</strong>, lebar bebas (recommended: 1200-1400px untuk best quality)</p>
+            <p className="text-xs text-gray-500 mb-2">Rekomendasi ukuran: <strong>1200-1400px x 400px</strong> untuk kualitas terbaik. Ukuran lain tetap diterima.</p>
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4">
                 <Input
