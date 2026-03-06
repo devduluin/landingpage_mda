@@ -48,10 +48,10 @@ export const metadata: Metadata = {
     siteName: "MDA Partner",
     images: [
       {
-        url: "/images/woman-with-shirt.svg",
-        width: 800,
-        height: 600,
-        alt: "Tenaga Kerja Profesional dari MDA Partner",
+        url: "/MDAP_LOGO_WHITE.svg",
+        width: 1200,
+        height: 630,
+        alt: "MDA Partner - Solusi Tenaga Kerja & Outsourcing Profesional",
       },
     ],
     locale: "id_ID",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "MDA Partner | Solusi Tenaga Kerja & Outsourcing Profesional",
     description:
       "Tingkatkan efisiensi bisnis Anda dengan solusi tenaga kerja profesional dan layanan outsourcing terpercaya dari MDA Partner.",
-    images: ["/images/woman-with-shirt.svg"],
+    images: ["/MDAP_LOGO_WHITE.svg"],
   },
   icons: {
     icon: "/logo-mda.svg",
@@ -78,6 +78,12 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
     },
   },
 };
@@ -108,7 +114,7 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Json-ld for favicon on google */}
+        {/* Enhanced JSON-LD Structured Data */}
         <Script
           id="organization-schema"
           type="application/ld+json"
@@ -116,9 +122,112 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              url: "https://mitradaksa.com",
-              logo: "https://mitradaksa.com/logo-mda.svg",
+              "@id": "https://mitradaksa.com/#organization",
               name: "MDA Partner",
+              legalName: "PT Rasa Aksata Nusantara",
+              url: "https://mitradaksa.com",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://mitradaksa.com/logo-mda.svg",
+                width: 250,
+                height: 60,
+              },
+              foundingDate: "2020",
+              description: "MDA Partner menyediakan solusi tenaga kerja profesional dan layanan outsourcing terpercaya di Indonesia.",
+              address: {
+                "@type": "PostalAddress",
+                addressCountry: "ID",
+                addressLocality: "Jakarta",
+                addressRegion: "DKI Jakarta",
+              },
+              areaServed: {
+                "@type": "GeoCircle",
+                name: "Jabodetabek",
+              },
+            }),
+          }}
+        />
+        <Script
+          id="local-business-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "@id": "https://mitradaksa.com/#business",
+              name: "MDA Partner",
+              image: "https://mitradaksa.com/MDAP_LOGO_WHITE.svg",
+              description: "Penyedia solusi tenaga kerja profesional, outsourcing, rekrutmen, dan manajemen SDM terpercaya di Indonesia",
+              url: "https://mitradaksa.com",
+              telephone: "+62-819-1471-0001",
+              priceRange: "$$",
+              areaServed: {
+                "@type": "GeoCircle",
+                name: "Jabodetabek dan Indonesia",
+              },
+              serviceType: [
+                "Outsourcing",
+                "Recruitment",
+                "HR Management",
+                "Payroll Services",
+                "Security Services",
+                "Cleaning Services",
+                "Driver Services",
+              ],
+            }),
+          }}
+        />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://mitradaksa.com/#website",
+              url: "https://mitradaksa.com",
+              name: "MDA Partner",
+              description: "Solusi Tenaga Kerja & Outsourcing Profesional",
+              publisher: {
+                "@id": "https://mitradaksa.com/#organization",
+              },
+              inLanguage: "id-ID",
+            }),
+          }}
+        />
+        <Script
+          id="breadcrumb-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Home",
+                  item: "https://mitradaksa.com",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "Tentang Kami",
+                  item: "https://mitradaksa.com/tentang-kami",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: "Produk & Layanan",
+                  item: "https://mitradaksa.com/produk",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 4,
+                  name: "Pendaftaran Mitra",
+                  item: "https://mitradaksa.com/pendaftaran-mitra",
+                },
+              ],
             }),
           }}
         />
