@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Header from "@/components/layout/Header";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
 import { TwoColumnFooterProps } from "@/components/layout/Footer";
+import LeadPopupForm from "@/components/sections/LeadPopupForm";
 
 // lazy load komponen
 const HeroSection = dynamic(() => import("@/components/sections/HeroSection"));
@@ -32,6 +33,8 @@ const AboutUs = dynamic(() => import("@/components/aboutUs/AboutUs"));
 const MDAPartnerWebsite: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const [isLeadPopupOpen, setIsLeadPopupOpen] = useState(false);
+
   return (
     <div className="flex flex-col h-screen bg-white">
       <Header scrollContainerRef={scrollContainerRef} />
@@ -39,27 +42,32 @@ const MDAPartnerWebsite: React.FC = () => {
         ref={scrollContainerRef}
         className="flex-grow overflow-y-auto overflow-x-hidden custom-scrollbar"
       >
-       <main>
-        <>
-          {pathname === "/produk" ? (
-            <Product />
-          ) : pathname === "/tentang-kami" ? (
-            <AboutUs />
-          ) : (
-            <>
-              <HeroSection />
-              <MDAPartnerSection />
-              <ServicesSection />
-              <ClientsSection />
-              <CoverageAreaSection />
-              <CTASection />
-            </>
-          )}
-        </>
-      </main>
+        <main>
+          <>
+            {pathname === "/produk" ? (
+              <Product />
+            ) : pathname === "/tentang-kami" ? (
+              <AboutUs />
+            ) : (
+              <>
+                <HeroSection />
+                <MDAPartnerSection />
+                <ServicesSection />
+                <ClientsSection />
+                <CoverageAreaSection />
+                <CTASection onOpenLeadForm={() => setIsLeadPopupOpen(true)} />
+              </>
+            )}
+          </>
+        </main>
 
         <TwoColumnFooter scrollContainerRef={scrollContainerRef} />
       </div>
+
+      <LeadPopupForm
+        isOpen={isLeadPopupOpen}
+        onClose={() => setIsLeadPopupOpen(false)}
+      />
     </div>
   );
 };

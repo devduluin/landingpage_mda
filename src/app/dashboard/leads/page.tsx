@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Edit, Trash, Plus, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Edit, Trash, Plus, ChevronLeft, ChevronRight, Eye } from 'lucide-react'
 import { Button } from '@/components/ui/button';
 import {
   Select,
@@ -23,6 +23,7 @@ import {
   AlertDialogAction,
 } from "@/components/ui/alert-dialog";
 import { toast } from 'sonner';
+import formatWhatsappNumber from '@/lib/formatWhatsappNumber';
 
 interface Lead {
   id: string;
@@ -119,7 +120,7 @@ export default function LeadsPage() {
           </Link>
         </Button>
       </div>
-      
+
       {/* Content */}
       <div className="backdrop-blur-xl bg-white/70 rounded-2xl border border-white/20 shadow-lg p-6 overflow-x-auto">
         {loading ? (
@@ -156,8 +157,24 @@ export default function LeadsPage() {
                 {leads.map((lead) => (
                   <tr key={lead.id} className="hover:bg-white/30 transition-colors">
                     <td className="p-3 text-gray-900 break-words">{lead.fullName}</td>
-                    <td className="p-3 text-gray-900 break-words">{lead.email}</td>
-                    <td className="p-3 text-gray-900 break-words">{lead.phone}</td>
+                    <td className="p-3 text-gray-900 break-words">
+                      <a
+                        href={`mailto:${lead.email}`}
+                        className="text-blue-600 hover:underline"
+                      >
+                        {lead.email}
+                      </a>
+                    </td>
+                    <td className="p-3 text-gray-900 break-words">
+                      <a
+                        href={`https://wa.me/${formatWhatsappNumber(lead.phone)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-green-600 hover:underline"
+                      >
+                        {lead.phone}
+                      </a>
+                    </td>
                     <td className="p-3 text-gray-900 break-words">{lead.companyName}</td>
                     <td className="p-3 text-gray-900 break-words">{lead.industry}</td>
                     <td className="p-3">
@@ -180,6 +197,16 @@ export default function LeadsPage() {
                           variant="outline"
                           size="icon"
                           asChild
+                          className="border-blue-600 hover:bg-blue-50 hover:text-blue-900 hover:border-blue-300"
+                        >
+                          <Link href={`/dashboard/leads/${lead.id}`}>
+                            <Eye className="h-4 w-4 text-blue-600 hover:text-blue-900" />
+                          </Link>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          asChild
                           className="border-orange-600 hover:bg-orange-50 hover:text-orange-900 hover:border-orange-300"
                         >
                           <Link href={`/dashboard/leads/update/${lead.id}`}>
@@ -188,8 +215,8 @@ export default function LeadsPage() {
                         </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button 
-                              variant="outline" 
+                            <Button
+                              variant="outline"
                               size="icon"
                               className="border-red-600 hover:bg-red-50 hover:text-red-900 hover:border-red-300"
                             >
@@ -241,7 +268,7 @@ export default function LeadsPage() {
             <div className="text-sm text-gray-600">
               Showing {((page - 1) * limit) + 1} to {Math.min(page * limit, meta.total)} of {meta.total} leads
             </div>
-            
+
             {meta.totalPages > 1 && (
               <div className="flex items-center gap-2">
                 <Button
@@ -253,24 +280,24 @@ export default function LeadsPage() {
                   <ChevronLeft className="w-4 h-4" />
                   Previous
                 </Button>
-              
+
                 <div className="flex items-center gap-1">
                   {Array.from({ length: meta.totalPages }, (_, i) => i + 1).map((pageNum) => {
-                    const showPage = 
-                      pageNum === 1 || 
-                      pageNum === meta.totalPages || 
+                    const showPage =
+                      pageNum === 1 ||
+                      pageNum === meta.totalPages ||
                       (pageNum >= page - 1 && pageNum <= page + 1);
-                    
+
                     if (!showPage && pageNum === 2 && page > 3) {
                       return <span key={pageNum} className="px-2">...</span>;
                     }
-                    
+
                     if (!showPage && pageNum === meta.totalPages - 1 && page < meta.totalPages - 2) {
                       return <span key={pageNum} className="px-2">...</span>;
                     }
-                    
+
                     if (!showPage) return null;
-                    
+
                     return (
                       <Button
                         key={pageNum}
@@ -284,7 +311,7 @@ export default function LeadsPage() {
                     );
                   })}
                 </div>
-              
+
                 <Button
                   variant="outline"
                   size="sm"

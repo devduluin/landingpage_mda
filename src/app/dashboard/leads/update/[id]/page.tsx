@@ -29,11 +29,18 @@ export default function UpdateLeadPage({
   });
 
   const serviceOptions = [
-    'Satpam',
+    'Ride-Hailing Driver',
+    'Manufacture (Pabrikasi/Garmen)',
+    'Security & Building Management',
+    'Courier',
+    'Trucking Driver',
+    'Technician',
+    'Gardener (Layanan Pertamanan)',
+    'Pest Control',
+    'Gondola',
     'Cleaning Service',
-    'Administrasi',
-    'Sales',
-    'Operator Jahit',
+    'Driver Kantoran',
+    'Front Office',
   ];
 
   useEffect(() => {
@@ -182,7 +189,7 @@ export default function UpdateLeadPage({
                     onChange={() => handleServiceChange(service)}
                     className="rounded border-gray-300"
                   />
-                  <span className="text-sm">{service}</span>
+                  <span className="text-sm text-black">{service}</span>
                 </label>
               ))}
             </div>

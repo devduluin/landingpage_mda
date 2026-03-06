@@ -6,7 +6,13 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
-const CTASection = () => {
+import Link from "next/link";
+
+interface CTASectionProps {
+  onOpenLeadForm?: () => void;
+}
+
+const CTASection = ({ onOpenLeadForm }: CTASectionProps) => {
   const sectionRef = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(sectionRef, {
     threshold: 0.3,
@@ -29,11 +35,10 @@ const CTASection = () => {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           {/* Left Content */}
           <div
-            className={`lg:w-1/2 text-center lg:text-left transition-all duration-700 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-10"
-            }`}
+            className={`lg:w-1/2 text-center lg:text-left transition-all duration-700 ${isVisible
+              ? "opacity-100 translate-x-0"
+              : "opacity-0 -translate-x-10"
+              }`}
           >
             <h2 className="text-2xl md:text-[2rem] font-normal text-gray-800 mb-2 leading-tight">
               Butuh solusi cepat untuk kebutuhan SDM?
@@ -44,33 +49,43 @@ const CTASection = () => {
               <span className="text-gray-800">Jawabannya!</span>
             </p>
 
-            <Button
-              size="lg"
-              onClick={() =>
-                window.open("https://wa.me/6285121048417", "_blank")
-              }
-              className="cursor-pointer
-    bg-gradient-to-r from-orange-500 to-orange-600 
-    hover:from-orange-600 hover:to-orange-700 
-    text-white font-semibold px-6 py-3 md:px-8 md:py-4 !rounded-full
-    shadow-lg hover:shadow-xl hover:shadow-orange-500/30
-    transform transition-transform duration-300 ease-in-out group
-    text-base
-    hover:translate-x-[4px] active:translate-x-[8px]
-  "
-            >
-              <span>Bergabung Bersama Kami!</span>
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-active:translate-x-2" />
-            </Button>
+            <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
+              <Button
+                size="lg"
+                onClick={() => onOpenLeadForm?.()}
+                className="cursor-pointer
+                  bg-gradient-to-r from-orange-500 to-orange-600 
+                  hover:from-orange-600 hover:to-orange-700 
+                  text-white font-semibold px-6 py-3 md:px-8 md:py-4 !rounded-full
+                  shadow-lg hover:shadow-xl hover:shadow-orange-500/30
+                  transform transition-transform duration-300 ease-in-out group
+                  text-base w-full sm:w-auto
+                  hover:translate-x-[4px] active:translate-x-[8px]
+                "
+              >
+                <span>Bergabung Bersama Kami!</span>
+                <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-active:translate-x-2" />
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="!rounded-full px-6 py-2 border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white font-semibold transition-all duration-300 w-full sm:w-auto text-base h-auto"
+              >
+                <Link href="/pendaftaran-mitra">
+                  Daftar Sebagai Mitra
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/* Right Image - Hidden on mobile */}
           <div
-            className={`hidden lg:block lg:w-1/2 relative transition-all duration-700 delay-200 ${
-              isVisible
-                ? "opacity-100 -translate-y-9"
-                : "opacity-0 translate-y-10"
-            }`}
+            className={`hidden lg:block lg:w-1/2 relative transition-all duration-700 delay-200 ${isVisible
+              ? "opacity-100 -translate-y-9"
+              : "opacity-0 translate-y-10"
+              }`}
           >
             {/* Image container that extends beyond wrapper */}
             <div className="relative w-full pointer-events-none h-[500px] -mt-16">

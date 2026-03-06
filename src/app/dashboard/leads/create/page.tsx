@@ -23,11 +23,18 @@ export default function CreateLeadPage() {
   });
 
   const serviceOptions = [
-    'Satpam',
+    'Ride-Hailing Driver',
+    'Manufacture (Pabrikasi/Garmen)',
+    'Security & Building Management',
+    'Courier',
+    'Trucking Driver',
+    'Technician',
+    'Gardener (Layanan Pertamanan)',
+    'Pest Control',
+    'Gondola',
     'Cleaning Service',
-    'Administrasi',
-    'Sales',
-    'Operator Jahit',
+    'Driver Kantoran',
+    'Front Office',
   ];
 
   const handleServiceChange = (service: string) => {
