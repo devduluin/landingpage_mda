@@ -3,6 +3,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import useIntersectionObserver from "@/hooks/useIntersectionObserver";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { FaUsers } from "react-icons/fa";
 import { FaMoneyBillTransfer } from "react-icons/fa6";
 import { AiFillDatabase } from "react-icons/ai";
@@ -107,7 +110,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   );
 };
 
-const MDAPartnerSection: React.FC = () => {
+interface MDAPartnerSectionProps {
+  onOpenLeadForm?: () => void;
+}
+
+const MDAPartnerSection: React.FC<MDAPartnerSectionProps> = ({
+  onOpenLeadForm,
+}) => {
   // Ref for the entire section, for elements that need to stay visible longer
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -200,6 +209,33 @@ const MDAPartnerSection: React.FC = () => {
                 kerumitan manajemen SDM.
               </p>
             </div>
+            <div className="mt-6 w-full flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  size="lg"
+                  onClick={() => onOpenLeadForm?.()}
+                  className="cursor-pointer
+                    bg-gradient-to-r from-orange-500 to-orange-600
+                    hover:from-orange-600 hover:to-orange-700
+                    text-white font-semibold px-6 py-3 md:px-8 md:py-4 !rounded-full
+                    shadow-lg hover:shadow-xl hover:shadow-orange-500/30
+                    transform transition-transform duration-300 ease-in-out group
+                    text-base w-full sm:w-auto
+                    hover:translate-x-[4px] active:translate-x-[8px]
+                  "
+                >
+                  <span>Konsultasi Kebutuhan SDM</span>
+                  <ArrowRight className="w-5 h-5 ml-2 transition-transform duration-300 ease-in-out group-hover:translate-x-1 group-active:translate-x-2" />
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="!rounded-full px-6 py-2 border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white font-semibold transition-all duration-300 w-full sm:w-auto text-base h-auto"
+                >
+                  <Link href="/pendaftaran-mitra">Daftar Sebagai Mitra</Link>
+                </Button>
+              </div>
           </div>
 
           {/* Header Section - Now with its own ref and visibility state */}

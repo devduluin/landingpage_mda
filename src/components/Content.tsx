@@ -51,7 +51,9 @@ const MDAPartnerWebsite: React.FC = () => {
             ) : (
               <>
                 <HeroSection />
-                <MDAPartnerSection />
+                <MDAPartnerSection
+                  onOpenLeadForm={() => setIsLeadPopupOpen(true)}
+                />
                 <ServicesSection />
                 <ClientsSection />
                 <CoverageAreaSection />
