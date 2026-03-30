@@ -144,6 +144,11 @@ export default function LeadPopupForm({ isOpen, onClose }: LeadPopupFormProps) {
                 throw new Error(data.message || 'Terjadi kesalahan');
             }
 
+            // Track conversion
+            if (typeof window !== 'undefined' && (window as any).gtag_report_conversion) {
+                (window as any).gtag_report_conversion();
+            }
+
             setStep('success');
         } catch (err: any) {
             setErrors(prev => ({

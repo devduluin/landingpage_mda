@@ -114,6 +114,29 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Event snippet for Submit lead form conversion page */}
+        <Script
+          id="google-conversion"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function gtag_report_conversion(url) {
+                var callback = function () {
+                  if (typeof(url) != 'undefined') {
+                    window.location = url;
+                  }
+                };
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-16659653153/fZiACPCc-ZEcEKHE-Ic-',
+                    'value': 1.0,
+                    'currency': 'IDR',
+                    'event_callback': callback
+                });
+                return false;
+              }
+            `,
+          }}
+        />
         {/* Enhanced JSON-LD Structured Data */}
         <Script
           id="organization-schema"

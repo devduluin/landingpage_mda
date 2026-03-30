@@ -140,6 +140,10 @@ export default function HeroSection() {
       ref={heroRef}
       className="relative bg-transparent pt-6 md:pt-8 pb-8 md:pb-16 container mx-auto px-4 max-w-7xl"
     >
+      {/* SEO H1 - Hidden but accessible to search engines and screen readers */}
+      <h1 className="sr-only">
+        MDA Partner - Solusi Tenaga Kerja dan Outsourcing Profesional Terpercaya di Indonesia
+      </h1>
       <div
         className="relative w-full h-[180px] sm:h-[240px] md:h-[320px] lg:h-[400px] overflow-hidden rounded-3xl md:rounded-[48px] bg-black leading-none group touch-pan-y"
         onMouseEnter={() => setIsHovering(true)}
