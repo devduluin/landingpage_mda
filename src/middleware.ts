@@ -13,6 +13,7 @@ const PUBLIC_ROUTES = [
 const PUBLIC_API = [
   "/api/auth/login",
   "/api/leads",
+  "/api/partner-registrations",
 ];
 
 function isPublicRoute(pathname: string) {
